@@ -1,6 +1,6 @@
 #include "tlc5947_controller.h"
 
-#define SIZE 36
+
 
 static const unsigned long long evenMask = ~(0xFFFFFFFFF);	// EXAMPLE: 0xFFFFFFF000000000 
 															// (in case of 8 byte unsigned long long)
@@ -97,56 +97,56 @@ void printRegister(uint8_t *tab)
 
 
 
-int main()
-{
-	// printf("ledRGBcolor: [ 7|6|5|4|3|2|1|0 ]\n");
-	printf("sizeof(long int): %u\n", sizeof(unsigned long long));
-	// printf("evenMask: %#018lx\n", evenMask);
-	// printf("oddMask:  %#018lx\n", oddMask);
+// int main()
+// {
+// 	// printf("ledRGBcolor: [ 7|6|5|4|3|2|1|0 ]\n");
+// 	printf("sizeof(long int): %u\n", sizeof(unsigned long long));
+// 	// printf("evenMask: %#018lx\n", evenMask);
+// 	// printf("oddMask:  %#018lx\n", oddMask);
 
-	uint8_t tab[SIZE];
-	memset(tab, 0, SIZE);
+// 	uint8_t tab[SIZE];
+// 	memset(tab, 0, SIZE);
 
-	// int i = 0;
+// 	// int i = 0;
 
-	RGB rgb0;
-	rgb0.red   = 0x123;
-	rgb0.green = 0x789;
-	rgb0.blue  = 0xABC;
+// 	RGB rgb0;
+// 	rgb0.red   = 0x123;
+// 	rgb0.green = 0x789;
+// 	rgb0.blue  = 0xABC;
 
-	RGB rgb1;
-	rgb1.red   = 0x78D;
-	rgb1.green = 0x9C0;
-	rgb1.blue  = 0xBAF; 
+// 	RGB rgb1;
+// 	rgb1.red   = 0x78D;
+// 	rgb1.green = 0x9C0;
+// 	rgb1.blue  = 0xBAF; 
 
-	RGB rgb2;
-	rgb2.red   = 0x578;
-	rgb2.green = 0x892;
-	rgb2.blue  = 0x7CD; 
+// 	RGB rgb2;
+// 	rgb2.red   = 0x578;
+// 	rgb2.green = 0x892;
+// 	rgb2.blue  = 0x7CD; 
 
-	RGB rgb3;
-	rgb3.red   = 0x25F;
-	rgb3.green = 0x7EC;
-	rgb3.blue  = 0xFC2; 
+// 	RGB rgb3;
+// 	rgb3.red   = 0x25F;
+// 	rgb3.green = 0x7EC;
+// 	rgb3.blue  = 0xFC2; 
 
 		
-	setLedColor(4, rgb0, tab);
-	setLedColor(5, rgb1, tab);
-	setLedColor(6, rgb2, tab);
-	setLedColor(7, rgb3, tab);
+// 	setLedColor(4, rgb0, tab);
+// 	setLedColor(5, rgb1, tab);
+// 	setLedColor(6, rgb2, tab);
+// 	setLedColor(7, rgb3, tab);
 
-	printRegister(tab);
+// 	printRegister(tab);
 
 	
 	
 
-	// // printf("tab: ");
-	// for(i=0; i<20 /*SIZE*/; ++i)
-	// {
-	// 	printf("tab[%d]: %#x\n", i, (unsigned) tab[i] & 0x000000FF );
-	// 	// printf("%x", (unsigned) tab[i] & 0x000000ff );
-	// }	
-	// printf("\n");
+// 	// // printf("tab: ");
+// 	// for(i=0; i<20 /*SIZE*/; ++i)
+// 	// {
+// 	// 	printf("tab[%d]: %#x\n", i, (unsigned) tab[i] & 0x000000FF );
+// 	// 	// printf("%x", (unsigned) tab[i] & 0x000000ff );
+// 	// }	
+// 	// printf("\n");
 	
-	return 0;
-}
+// 	return 0;
+// }

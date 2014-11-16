@@ -8,6 +8,8 @@
 #include <stdint.h>
 #include "RGB.h"
 
+#define SIZE 36
+
 /*----------------------------------------------------------------------------------------------------
 README	README	README	README	README	README	README	README README	README	README	README	README
 ------------------------------------------------------------------------------------------------------
