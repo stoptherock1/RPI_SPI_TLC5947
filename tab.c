@@ -1,50 +1,57 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/types.h>
+#include <stdint.h>
 
 #define SIZE 36
 
-const unsigned long evenMask = ~(0xfffffffff);	// 0xfffffff000000000 (in case of 8 byte unsigned long)
-const unsigned long oddMask  = ~(0xfffffffff0);	// 0xffffff000000000f (in case of 8 byte unsigned long)
+const unsigned long long evenMask = ~(0xFFFFFFFFF);		// EXAMPLE: 0xFFFFFFF000000000 
+														// (in case of 8 byte unsigned long long)
+
+const unsigned long long oddMask  = ~(0xFFFFFFFFF0);	// EXAMPLE: 0xFFFFFF000000000F 
+														//(in case of 8 byte unsigned long long)
 
 typedef struct RGB
 {
-	unsigned long red;
-	unsigned long green;
-	unsigned long blue;
+	unsigned long long red;
+	unsigned long long green;
+	unsigned long long blue;
 } RGB;
 
 
-/*-----------------------------------------------------------------------------
-README	README	README	README	README	README	README	README README	README	
--------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------------------------------
+README	README	README	README	README	README	README	README README	README	README	README	README
+------------------------------------------------------------------------------------------------------
 		§1) LED INDEXING
 			leds are indexed from 0
 
 		§2) LED ADDRESS ARITHMETIC
 			* in memory model, used in this library, even led N has address = (N/2) * 9
-			* odd led N has address = ( ((N+1)/2) * 9 ) - 5
+			* odd led N has address = ( ((N-1)/2) * 9 ) + 4
 
 				EXAMPLE - (led)address - :
 					even leds have addresses: (0)0, (2)9, (4)18, (6)27, ...
 					odd leds have addresses:  (1)4, (3)13, (5)22, ...
--------------------------------------------------------------------------------
-README	README	README	README	README	README	README	README README	README	
-/------------------------------------------------------------------------------*/
+------------------------------------------------------------------------------------------------------
+README	README	README	README	README	README	README	README README	README	README	README	README
+/---------------------------------------------------------------------------------------------------*/
 
 
-unsigned long compileRGBcolor(RGB rgbSet)
+
+
+unsigned long long compileRGBpattern(RGB rgbSet)
 {
-	unsigned long red   = rgbSet.red,
-				  green = rgbSet.green, 
-				  blue  = rgbSet.blue;
+	unsigned long long red   = rgbSet.red,
+				  	   green = rgbSet.green, 
+				       blue  = rgbSet.blue;
 
-	red   =	  red & 0xfff;	// remove remaining bits 
-	green = green &	0xfff;	// so every color may have values from 0x000 to 0xfff
-	blue  =  blue & 0xfff;
+	red   =	  red & 0xFFF;			// remove remaining bits
+	green = green &	0xFFF;			// so every color may have values from 0x000 to 0xfff
+	blue  =  blue & 0xFFF;			// (one and a half bytes value)
 
-	unsigned long RGBcolor = 0;
-									// [00 00 .. 00]  - example schemes are given for 8 byte long int
+	unsigned long long RGBcolor = 0;
+									// [00 00 .. 00] - example schemes of 8 byte unsigned long long
 
 	RGBcolor =  RGBcolor | blue;	// adding 'blue' value to RGBcolor
 									// [00 00 00 00 00 00 00 00] -> [00 00 00 00 00 00 0b bb]
@@ -61,41 +68,77 @@ unsigned long compileRGBcolor(RGB rgbSet)
 	RGBcolor =  RGBcolor | red;		// adding 'blue' value to RGBcolor
 									// [00 00 00 0b bb gg g0 00] -> [00 00 00 0b bb gg gr rr]
 
-	return RGBcolor;				// result is not ready for 
+	return RGBcolor;
 }
 
-void insertLedRgb(unsigned int ledNumber, unsigned long rgbSet, char* tab)
+int insertLedRgb(unsigned int ledNumber, unsigned long long rgbSet, uint8_t* tab)
 {
-	unsigned int index = -1;
-	unsigned long* tabSegment = 0;
-	if( ledNumber%2 == 0 ) 					// even led number
-	{
-		index = (ledNumber/2) * 9;			// (N/2) * 9 	(check README)
-		tabSegment = (unsigned long *) &tab[index];
+	if(tab <= 0)
+		return -1;
 
-		*tabSegment = (*tabSegment) & evenMask;	// clean last 4.5 bytes for new RGB value
+	unsigned int index = -1;
+	unsigned long long* tabSegment = 0;
+
+	if( 0 == ledNumber%2 ) 					// even led number
+	{
+		index = (ledNumber/2) * 9;						// (N/2) * 9 	(check README)
+		tabSegment = (unsigned long long*) &tab[index];
+
+		*tabSegment = (*tabSegment) & evenMask;			// clean last 4.5 bytes for new RGB value
 	}
 	else									// odd led number
 	{
-		index = ( ((ledNumber+1)/2) * 9) - 5;	// ( ((N+1)/2) * 9 ) - 5 	(check README)
-		tabSegment = (unsigned long *) &tab[index];
+		index = ( ((ledNumber-1)/2) * 9) + 4;			// ( ((N-1)/2) * 9 ) + 4 	(check README)
+		tabSegment = (unsigned long long*) &tab[index];
 
-		*tabSegment = (*tabSegment) & oddMask;	// clean last 4.5 bytes for new RGB value
+		*tabSegment = (*tabSegment) & oddMask;			// clean last 4.5 bytes for new RGB value
 
-		rgbSet = rgbSet << 4;					// shift compiled RGB value 4 bits left
-												// (necessary in case of odd leds)
+		rgbSet = rgbSet << 4;							// shift compiled RGB value 4 bits left
+														// (necessary in case of odd leds)
 	}
 
-	*tabSegment = (*tabSegment) | rgbSet; 		// put compiled led color to array
+	*tabSegment = (*tabSegment) | rgbSet; 				// put compiled led color to array
+
+	return 0;
 }
+
+int setLedColor(unsigned int ledNumber, RGB rgbSet, uint8_t* tab)
+{
+	unsigned long long RGBpattern = 0;
+
+	RGBpattern   = compileRGBpattern(rgbSet);
+	int result = insertLedRgb(ledNumber, RGBpattern, tab);
+
+	return result;
+}
+
+void printRegister(uint8_t *tab)
+{
+	int i=SIZE-1;
+	
+	printf("tab: [");
+
+	for(i=SIZE-1; i>=0; --i)
+	{
+		printf("%02X", tab[i]);
+	}
+
+	printf("]\n");
+}
+
 
 
 int main()
 {
-	char tab[SIZE];
-	memset(tab, 0xFF, SIZE);
+	// printf("ledRGBcolor: [ 7|6|5|4|3|2|1|0 ]\n");
+	printf("sizeof(long int): %u\n", sizeof(unsigned long long));
+	// printf("evenMask: %#018lx\n", evenMask);
+	// printf("oddMask:  %#018lx\n", oddMask);
 
-	int i = 0;
+	uint8_t tab[SIZE];
+	memset(tab, 0, SIZE);
+
+	// int i = 0;
 
 	RGB rgb0;
 	rgb0.red   = 0x123;
@@ -107,88 +150,34 @@ int main()
 	rgb1.green = 0x9C0;
 	rgb1.blue  = 0xBAF; 
 
-	unsigned long RGBcolor = 0;
+	RGB rgb2;
+	rgb2.red   = 0x578;
+	rgb2.green = 0x892;
+	rgb2.blue  = 0x7CD; 
 
-	// printf("ledRGBcolor: [ 7|6|5|4|3|2|1|0 ]\n");
+	RGB rgb3;
+	rgb3.red   = 0x25F;
+	rgb3.green = 0x7EC;
+	rgb3.blue  = 0xFC2; 
 
+		
+	setLedColor(4, rgb0, tab);
+	setLedColor(5, rgb1, tab);
+	setLedColor(6, rgb2, tab);
+	setLedColor(7, rgb3, tab);
+
+	printRegister(tab);
 
 	
+	
 
-	// unsigned long *ledRGBcolor = 0;
-
-	//----------------led0
-
-	// void setLedColor(unsigned int ledNumber, )
+	// // printf("tab: ");
+	// for(i=0; i<20 /*SIZE*/; ++i)
 	// {
-	// 	unsigned long RGBcolor = 0;
-	// 	unsigned long *ledRGBcolor = 0;
-
-	// 	RGBcolor = compileRGBcolor(r0, g0, b0);
-
-	// 	ledRGBcolor = (unsigned long *) &tab[0];
-
-	// 	*ledRGBcolor = (*ledRGBcolor) & 0xfffffff000000000;			// clean last 4.5 bytes for new RGB value
-
-	// 	*ledRGBcolor = (*ledRGBcolor) | RGBcolor; 					// put compiled led color to array
-
-	// 	printf("RGBcolor: %#018lx\n", RGBcolor);
-
-	// 	printf("ledRGBcolor: %#018lx\n", *ledRGBcolor);
-	// }
-
-	
-	RGBcolor = compileRGBcolor(rgb0);
-	insertLedRgb(0, RGBcolor, tab);
-
-	// ledRGBcolor = (unsigned long *) &tab[0];
-
-	// *ledRGBcolor = (*ledRGBcolor) & evenMask;			// clean last 4.5 bytes for new RGB value
-
-	// *ledRGBcolor = (*ledRGBcolor) | RGBcolor; 					// put compiled led color to array
-
-	// printf("RGBcolor: %#018lx\n", RGBcolor);
-
-	// printf("ledRGBcolor: %#018lx\n", *ledRGBcolor);
-
-	//----------------led1
-
-	RGBcolor = compileRGBcolor(rgb1);
-	insertLedRgb(1, RGBcolor, tab);
-	
-	// ledRGBcolor = (unsigned long *) &tab[4];
-
-	// *ledRGBcolor = (*ledRGBcolor) & oddMask;			// clean last 4.5 bytes for new RGB value
-
-	// RGBcolor = RGBcolor << 4;									// shift compiled RGB value 4 bits left
-	// 															// (necessary in case of odd leds)
-
-	// printf("RGBcolor: %#018lx\n", RGBcolor);
-
-	// *ledRGBcolor = (*ledRGBcolor) | RGBcolor; 					// put compiled led color to array
-
-
-	// printf("ledRGBcolor: %#018lx\n", *ledRGBcolor);
-
-	//------------------------------------------------------------------------------------------------//
-
-
-	for(i=0; i< 10 /*SIZE*/; ++i)
-	{
-		printf("tab[%d]: %#x\n", i, (unsigned) tab[i] & 0x000000ff );
-	}	
-
-			   
-	
-	printf("evenMask: %#018lx\n", evenMask);
-	printf("oddMask:  %#018lx\n", oddMask);
-
-
-
-
-
-	// printf("sizeof(long int): %lu\n", sizeof(long int));
-
-
+	// 	printf("tab[%d]: %#x\n", i, (unsigned) tab[i] & 0x000000FF );
+	// 	// printf("%x", (unsigned) tab[i] & 0x000000ff );
+	// }	
+	// printf("\n");
 	
 	return 0;
 }
