@@ -1,43 +1,12 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/types.h>
-#include <stdint.h>
+#include "tlc5947_controller.h"
 
 #define SIZE 36
 
-const unsigned long long evenMask = ~(0xFFFFFFFFF);		// EXAMPLE: 0xFFFFFFF000000000 
-														// (in case of 8 byte unsigned long long)
+static const unsigned long long evenMask = ~(0xFFFFFFFFF);	// EXAMPLE: 0xFFFFFFF000000000 
+															// (in case of 8 byte unsigned long long)
 
-const unsigned long long oddMask  = ~(0xFFFFFFFFF0);	// EXAMPLE: 0xFFFFFF000000000F 
-														//(in case of 8 byte unsigned long long)
-
-typedef struct RGB
-{
-	unsigned long long red;
-	unsigned long long green;
-	unsigned long long blue;
-} RGB;
-
-
-/*----------------------------------------------------------------------------------------------------
-README	README	README	README	README	README	README	README README	README	README	README	README
-------------------------------------------------------------------------------------------------------
-		§1) LED INDEXING
-			leds are indexed from 0
-
-		§2) LED ADDRESS ARITHMETIC
-			* in memory model, used in this library, even led N has address = (N/2) * 9
-			* odd led N has address = ( ((N-1)/2) * 9 ) + 4
-
-				EXAMPLE - (led)address - :
-					even leds have addresses: (0)0, (2)9, (4)18, (6)27, ...
-					odd leds have addresses:  (1)4, (3)13, (5)22, ...
-------------------------------------------------------------------------------------------------------
-README	README	README	README	README	README	README	README README	README	README	README	README
-/---------------------------------------------------------------------------------------------------*/
-
-
+static const unsigned long long oddMask  = ~(0xFFFFFFFFF0);	// EXAMPLE: 0xFFFFFF000000000F 
+															//(in case of 8 byte unsigned long long)
 
 
 unsigned long long compileRGBpattern(RGB rgbSet)
