@@ -201,10 +201,10 @@ void printRegister(uint8_t *tab)
 
 	for(i=SIZE-1; i>=0; --i)
 	{
-		printf("%02X", tab[i]);
+		printf("%02X ", tab[i]);
 	}
 
-	printf("]\n");
+	printf("\b]\n");
 }
 
 
