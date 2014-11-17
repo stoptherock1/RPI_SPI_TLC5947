@@ -30,10 +30,6 @@ README	README	README	README	README	README	README	README README	README	README	REA
 README	README	README	README	README	README	README	README README	README	README	README	README
 /---------------------------------------------------------------------------------------------------*/
 
-uint64_t compileRGBpattern(RGB rgbSet);
-
-int insertLedRgb(uint32_t ledNumber, uint64_t rgbSet, uint8_t* tab);
-
 int setLedColor(uint32_t ledNumber, RGB rgbSet, uint8_t* tab);
 
 void printRegister(uint8_t *tab);
