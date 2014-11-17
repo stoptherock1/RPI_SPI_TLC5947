@@ -3,9 +3,9 @@
 
 typedef struct RGB
 {
-	unsigned long long red;
-	unsigned long long green;
-	unsigned long long blue;
+	uint64_t red;
+	uint64_t green;
+	uint64_t blue;
 } RGB;
 
 #endif /*RGB_H*/

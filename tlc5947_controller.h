@@ -8,7 +8,10 @@
 #include <stdint.h>
 #include "RGB.h"
 
-#define SIZE 36
+#define REAL_SIZE 52		// real size is bigger by 16 , to prevent reading/writing out of scope
+#define USED_SIZE 36		// it is caused by implemented here color compilation mechanism
+
+#define SIZE USED_SIZE 		// constant value SIZE is wide used here
 
 /*----------------------------------------------------------------------------------------------------
 README	README	README	README	README	README	README	README README	README	README	README	README
@@ -27,11 +30,11 @@ README	README	README	README	README	README	README	README README	README	README	REA
 README	README	README	README	README	README	README	README README	README	README	README	README
 /---------------------------------------------------------------------------------------------------*/
 
-unsigned long long compileRGBpattern(RGB rgbSet);
+uint64_t compileRGBpattern(RGB rgbSet);
 
-int insertLedRgb(unsigned int ledNumber, unsigned long long rgbSet, uint8_t* tab);
+int insertLedRgb(uint32_t ledNumber, uint64_t rgbSet, uint8_t* tab);
 
-int setLedColor(unsigned int ledNumber, RGB rgbSet, uint8_t* tab);
+int setLedColor(uint32_t ledNumber, RGB rgbSet, uint8_t* tab);
 
 void printRegister(uint8_t *tab);
 
