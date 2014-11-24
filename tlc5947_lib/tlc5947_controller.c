@@ -317,7 +317,7 @@ RGB getLedRGB(uint8_t ledNumber, uint8_t* tab)
 	return ledRGB;
 }
 
-int setLedColor(uint32_t ledNumber, RGB rgbSet, uint8_t* tab)
+int setLedRGB(uint32_t ledNumber, RGB rgbSet, uint8_t* tab)
 {
 	uint64_t pattern = 0;
 
@@ -331,7 +331,7 @@ int setLedColor(uint32_t ledNumber, RGB rgbSet, uint8_t* tab)
 	return result;
 }
 
-void printRegister(uint8_t *tab)
+void printLedDataArray(uint8_t *tab)
 {
 	int i=SIZE-1;
 	
@@ -377,14 +377,14 @@ int main()
 	// rgb3.blue  = 0xFC2; 
 
 		
-	setLedColor(0, rgb0, tab);
-	setLedColor(1, rgb0, tab);
-	setLedColor(2, rgb0, tab);
-	setLedColor(3, rgb0, tab);
-	setLedColor(4, rgb0, tab);
-	setLedColor(5, rgb0, tab);
-	setLedColor(6, rgb0, tab);
-	setLedColor(7, rgb0, tab);
+	setLedRGB(0, rgb0, tab);
+	setLedRGB(1, rgb0, tab);
+	setLedRGB(2, rgb0, tab);
+	setLedRGB(3, rgb0, tab);
+	setLedRGB(4, rgb0, tab);
+	setLedRGB(5, rgb0, tab);
+	setLedRGB(6, rgb0, tab);
+	setLedRGB(7, rgb0, tab);
 
 	RGB ledRGB = getLedRGB(2, tab);
 
@@ -398,7 +398,7 @@ int main()
 	printf("green 5: \t%llx\n", ledRGB.green);
 	printf("blue 5: \t%llx\n\n", ledRGB.blue);
 
-	printRegister(tab);
+	printLedDataArray(tab);
 	
 	return 0;
 }

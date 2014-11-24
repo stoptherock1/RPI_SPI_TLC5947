@@ -6,6 +6,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    this->setWindowTitle("LedSimulator");
 
     diameter = 100;
 
@@ -14,7 +15,6 @@ MainWindow::MainWindow(QWidget *parent) :
     hBoxLayout = new QHBoxLayout();
     window->setLayout(hBoxLayout);
     int border = 1;
-
 
     int lineEditsCounter = 0;
     for(int i=0; i<LED_NUMBER; ++i)
@@ -40,7 +40,6 @@ MainWindow::MainWindow(QWidget *parent) :
         vBoxLayouts[i]->addWidget( ledNames[i] );
         vBoxLayouts[i]->addWidget( labelsPixmaps[i] );
 
-//        QRegExp reNumbers("[0-1]\\d\\d|2[0-5]\\d|25[0-5]");
         QRegExp reNumbers("^([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])$");
 
 
@@ -85,7 +84,7 @@ MainWindow::MainWindow(QWidget *parent) :
 void MainWindow::setLedColor(QString text)
 {
     ledLineEdit *lineEdit = (ledLineEdit *) QObject::sender();
-    uint32_t ledNumber = lineEdit->getLedNumber();
+    uint32_t ledNumber = lineEdit->getNumber();
     uint8_t ledColorCode = lineEdit->getColorCode();
     uint8_t ledColor = text.toInt();
 
@@ -100,15 +99,10 @@ void MainWindow::setLedColor(QString text)
                  leds[ledNumber].green,
                  leds[ledNumber].blue);
 
-//    qDebug() << color;
 
     QBrush brush(color);
-//    qDebug() << ledNumber << "\t" << ledColorCode << "\t" << ledColor;
-//    QBrush brush(Qt::blue);
     painters[ledNumber]->setBrush(brush);
     painters[ledNumber]->drawEllipse(0, 0, diameter, diameter);
-//    this->update();
-//    painters[ledNumber]->
     labelsPixmaps[ledNumber]->setPixmap(*pixmaps[ledNumber]);
 }
 
@@ -124,7 +118,6 @@ MainWindow::~MainWindow()
             delete hBoxLines[lineEditsCounter];
             ++lineEditsCounter;
         }
-
 
         delete labelsPixmaps[i];
         delete painters[i];

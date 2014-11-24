@@ -8,7 +8,7 @@
 #include <stdint.h>
 #include "RGB.h"
 
-#define REAL_SIZE 52		// real size is bigger by 16 , to prevent reading/writing out of scope
+#define REAL_SIZE 39		// real size is bigger by 3 bytes, to prevent reading/writing out of scope
 #define USED_SIZE 36		// it is caused by implemented here color compilation mechanism
 
 #define SIZE USED_SIZE 		// constant value SIZE is wide used here
@@ -30,8 +30,8 @@ README	README	README	README	README	README	README	README README	README	README	REA
 README	README	README	README	README	README	README	README README	README	README	README	README
 /---------------------------------------------------------------------------------------------------*/
 
-int setLedColor(uint32_t ledNumber, RGB rgbSet, uint8_t* tab);
-
-void printLedTab(uint8_t *tab);
+int setLedRGB(uint32_t ledNumber, RGB rgbSet, uint8_t* tab);
+RGB getLedRGB(uint8_t ledNumber, uint8_t* tab);
+void printLedDataArray(uint8_t *tab);
 
 #endif /*TLC5947_CONTROLLER_H*/

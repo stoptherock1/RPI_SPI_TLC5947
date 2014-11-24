@@ -1,27 +1,27 @@
 #include "ledLineEdit.h"
 
-uint32_t ledLineEdit::getLedNumber() const
+uint32_t ledLineEdit::getNumber() const
 {
-    return ledData.ledNumber;
+    return number;
 }
 
-void ledLineEdit::setLedNumber(const uint32_t &value)
+void ledLineEdit::setNumber(const uint32_t &value)
 {
-    ledData.ledNumber = value;
+    number = value;
 }
 
 uint8_t ledLineEdit::getColorCode() const
 {
-    return ledData.ledColorCode;
+    return colorCode;
 }
 
 void ledLineEdit::setColorCode(const uint8_t &value)
 {
-    ledData.ledColorCode = value;
+    colorCode = value;
 }
 
-ledLineEdit::ledLineEdit(uint32_t ledNumber_, uint8_t color_)
+ledLineEdit::ledLineEdit(uint32_t ledNumber_, uint8_t colorCode_)
 {
-    ledData.ledNumber = ledNumber_;
-    ledData.ledColorCode = color_;
+    number = ledNumber_;
+    colorCode = colorCode_;
 }

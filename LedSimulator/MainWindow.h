@@ -11,7 +11,7 @@
 #include <QLabel>
 #include "renderarea.h"
 #include "ledLineEdit.h"
-#include "RGB.h"
+#include "../tlc5947_lib/RGB.h"
 
 #define LED_NUMBER 8
 #define LINE_EDITS_NUMBER 3
@@ -29,9 +29,6 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-
-protected:
-//    void paintEvent(QPaintEvent *);
 
 private:
     Ui::MainWindow *ui;
@@ -53,6 +50,5 @@ private:
 public slots:
     void setLedColor(QString text);
 };
-
 
 #endif // MAINWINDOW_H
