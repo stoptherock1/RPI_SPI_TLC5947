@@ -1,0 +1,12 @@
+\contentsline {chapter}{\hspace {0.64cm}Wst\IeC {\k e}p}{1}
+\contentsline {chapter}{\numberline {1}Opis sprz\IeC {\k e}tu}{5}
+\contentsline {section}{\numberline {1.1}P\IeC {\l }ytka \emph {Texas Intruments tlc5947}}{5}
+\contentsline {section}{\numberline {1.2}Mikrokomputer \emph {Raspberry Pi}}{5}
+\contentsline {chapter}{\numberline {2}Opis wybranych technologii}{7}
+\contentsline {section}{\numberline {2.1}Biblioteka do obs\IeC {\l }ugi p\IeC {\l }ytki \emph {Texas Intruments \\ tlc5947}}{7}
+\contentsline {section}{\numberline {2.2}Aplikacja graficzna \emph {LedSimulator} do symulacji dzia\IeC {\l }ania systemu}{7}
+\contentsline {section}{\numberline {2.3}Programowa konfiguracja \emph {Raspberry Pi}}{8}
+\contentsline {section}{\numberline {2.4}Interfejs komunikacyjny \emph {SPI}}{9}
+\contentsline {chapter}{\numberline {3}Biblioteka do sterowania}{11}
+\contentsline {chapter}{\hspace {0.64cm}Spis rysunk\'ow}{11}
+\contentsline {chapter}{\numberline {}Literatura}{15}
