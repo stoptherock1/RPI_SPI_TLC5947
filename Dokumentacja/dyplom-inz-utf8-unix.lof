@@ -2,4 +2,7 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Schemat komunikacji przez interfejs \emph {SPI}}}{10}
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Aplikacja graficzna \emph {LedSimulator}: przyk\IeC {\l }adowe kolory}}{17}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Aplikacja graficzna \emph {LedSimulator}: domy\IeC {\'s}lny stan diod}}{18}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Wyb\IeC {\'o}r trybu dzia\IeC {\l }ania aplikacji \emph {LedSimulator}}}{18}
 \addvspace {10\p@ }

@@ -54,12 +54,12 @@
   </widget>
   <action name="actionColor_calibrator">
    <property name="text">
-    <string>Color calibrator</string>
+    <string>Color calibration</string>
    </property>
   </action>
   <action name="actionTLC5947_Simulator">
    <property name="text">
-    <string>TLC5947 Simulator</string>
+    <string>TLC5947 simulation</string>
    </property>
   </action>
  </widget>

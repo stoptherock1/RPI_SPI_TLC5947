@@ -32,6 +32,6 @@ README	README	README	README	README	README	README	README README	README	README	REA
 
 int setLedRGB(uint32_t ledNumber, RGB rgbSet, uint8_t* tab);
 RGB getLedRGB(uint8_t ledNumber, uint8_t* tab);
-void printLedDataArray(uint8_t *tab);
+void printLedDataArray(uint8_t* tab);
 
 #endif /*TLC5947_CONTROLLER_H*/

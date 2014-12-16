@@ -13,6 +13,7 @@
 \usepackage{psfrag}
 \usepackage{float}
 \usepackage{url}
+\usepackage{enumitem}
 \usepackage{alltt}
 
 % \usepackage{hyperref}
@@ -34,6 +35,23 @@
 \usepackage{color}
 \usepackage{indentfirst}
 \usepackage{courier}
+
+
+\newcommand{\lcolumn}{0.3\textwidth}
+\newcommand{\rcolumn}{0.6\textwidth}
+
+\newenvironment{itemize*}%
+  {\begin{itemize}%
+    \setlength{\itemsep}{0pt}%
+    \setlength{\parskip}{0pt}}%
+  {\end{itemize}}
+
+
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
 
 
 
@@ -118,7 +136,7 @@ Stworzenie takiego produktu jest zadaniem nietrywialnym i czasochłonnym. Opraco
 % ************************************************************************************************
 \chapter{Opis sprzętu}
 
-\section{Płytka \emph{Texas Intruments tlc5947}}
+\section{Układ \emph{Texas Intruments tlc5947}}
 
 \section{Mikrokomputer \emph{Raspberry Pi}}
 \emph{Raspberry Pi} -- komputer jednopłytkowy, stworzony przez \emph{Raspberry Pi Foundation}. Mikrokomputer oparty jest na układzie \emph{Broadcom BCM2835 SoC}, który składa się z procesora \emph{ARM1176JZF-S 700 MHz}, \emph{VideoCore IV GPU} i 256 megabajtów (MB) pamięci RAM. Na potrzeby projektu na urządzeniu został zainstalowany system \emph{Raspbian}. 
@@ -169,7 +187,7 @@ Dany projekt jest rozwiązaniem zarówno sprzętowym, jak i programowym. Dlatego
 
 Po przeanalizowaniu najbardziej popularnych obecnie technologii, zostały wybrane języki \emph{C} i \emph{C++} z wykorzystaniem zestawu bibliotek \emph{Qt framework}.
 
-\section{Biblioteka do obsługi płytki \emph{Texas Intruments \\ tlc5947}}
+\section{Biblioteka do obsługi układu \emph{Texas Intruments tlc5947}}
 Jężyk \emph{C} jest sprawdzonym narzędziem, które pozwala na bardzo szczegółowe manipulacje na pamięci oraz bezpośrednią kontrolę nad złożonością i wydajnością implementowanych funkcji i algorytmów. Język \emph{C++}, z kolei, oprócz wsparcia nizkopoziomowych operacji również pozwala na implementację interfejsów obiektówych i graficznej powłoki do sterowania programem oraz reprezentacji wyników działania i komunikacji z użytkownikiem.
 
 
@@ -239,7 +257,7 @@ Po wprowadzeniu zmian należy zrestartować \emph{Raspberry Pi} (np. za pomocą 
 Po ponownym załadowaniu można sprawdzić, czy moduł \emph{SPI} został załadowany. W tym celu można skorzystać z polecenia \emph{lsmod}.
 \vspace{0.5cm}
 
-\begin{minipage}{\textwidth}
+%\begin{minipage}{\textwidth}
   \begin{lstlisting}[language=bash,frame=single,caption={Wynik wykonania polecenia \emph{lsmod}}]
   Module                  Size  Used by
   snd_bcm2835            12808  0
@@ -252,7 +270,7 @@ Po ponownym załadowaniu można sprawdzić, czy moduł \emph{SPI} został załad
   spidev                  5136  0
   spi_bcm2708             4401  0
   \end{lstlisting} 
-\end{minipage}
+%\end{minipage}
 
 \section{Interfejs komunikacyjny \emph{SPI}}
 
@@ -282,9 +300,482 @@ Po załadowaniu modułów jądra jest możliwa komunikacja z urządzeniem peryfe
 % ************************************************************************************************
 %                                           CHAPTER
 % ************************************************************************************************
-\chapter{Biblioteka do sterowania}
+\chapter{Implementacja}
+\section{Biblioteka do obsługi układu \emph{Texas Intruments tlc5947}}
+
+Biblioteka do sterowania układem składa się z trzech plików:
+
+\begin{itemize}
+  \item{\emph{tlc5947\_controller.h}}
+  \item{\emph{tlc5947\_controller.c}}
+  \item{\emph{RGB.h}}
+\end{itemize}
+
+Plik \emph{RGB.h} zawiera structurę \emph{RGB}, która składa się z trzech pól:
+
+\begin{itemize}[before=\ttfamily]
+  \item{\textbf{uint64\_t} red}
+  \item{\textbf{uint64\_t} green}
+  \item{\textbf{uint64\_t} blue}
+\end{itemize}
+
+Każde pole służy do przechowywania wartości odpowiedniego koloru. Struktura została przeniesiona do oddzielnego pliku w cela dalszej możliwości korzystania z nej bez konieczności dołączania całej biblioteki.
+
+\vspace{0.3cm}
+
+Plik nagłówkowy \emph{tlc5947\_controller.h} zawiera makro definicje i nagłówki trzech funkcji, które stanowią interfejs zewnętrzny (API) biblioteki:
+
+\begin{itemize}[before=\ttfamily]
+  \item{\textbf{int} setLedRGB(\textbf{uint32\_t} ledNumber, \textbf{RGB} rgbSet, \textbf{uint8\_t*} tab)}
+  \item{\textbf{RGB} getLedRGB(\textbf{uint8\_t} ledNumber, \textbf{uint8\_t*} tab)}
+  \item{\textbf{void} printLedDataArray(\textbf{uint8\_t*} tab)}
+\end{itemize}
+
+Również pllik \emph{tlc5947\_controller.h} zawiera krótki komentarz, który wyjaśnia zasadę indeksowania diod w rejestrze przesuwnym układu \emph{Texas Instruments tlc5947}. 
+
+\vspace{0.3cm}
+
+%\begin{minipage}{\textwidth}
+Plik \emph{tlc5947\_controller.c} oprócz implementacji interfejsu zawiera również implementacje funkcji statycznych, które nie są widoczne dla użytkownika biblioteki, natomiast są wykorzystywane w mechanizmach adresacji i komunikacji z układem \emph{tlc5947}. Lista zaimplementowanych funkcji wygląda nastepująco:
 
 
+  \begin{itemize}[before=\ttfamily]
+    \item{\textbf{static void} cleanRGB(\textbf{RGB*} rgb)}
+    \item{\textbf{static uint64\_t} getLedIndex(\textbf{uint8\_t} ledNumber)} 
+    \item{\textbf{static uint64\_t} compileEvenLedPattern(\textbf{RGB} rgbSet)} 
+    \item{\textbf{static uint64\_t} compileOddLedPattern(\textbf{RGB} rgbSet)} 
+    \item{\textbf{static int} insertLedRgb(\textbf{uint32\_t} ledNumber, \textbf{uint64\_t} RGBpattern, \textbf{uint8\_t*} tab)} 
+    \item{\textbf{RGB} getLedRGB(\textbf{uint8\_t} ledNumber, \textbf{uint8\_t*} tab)} 
+    \item{\textbf{int} setLedRGB(\textbf{uint32\_t} ledNumber, \textbf{RGB} rgbSet, \textbf{uint8\_t*} tab)} 
+    \item{\textbf{void} printLedDataArray(\textbf{uint8\_t*} tab)} 
+  \end{itemize}
+%\end{minipage}
+
+\vspace{0.7cm}
+
+W dalszej części tego rozdziału przedstawiony jest szczegółowy opis funkcji z przykładami kodu.
+% \clearpage
+
+%---------------function
+\subsection{cleanRGB} 
+%\begin{minipage}{\textwidth}
+
+%description
+Funkcja służy do czyszczenia obiektu struktury \emph{RGB}.
+%description
+
+\begin{center}
+  \begin{tabular}{|L{\lcolumn}|L{\rcolumn}|}
+    \hline
+    
+    \textbf{Nazwa funkcji}  & \textit{
+        cleanRGB
+        } \\ \hline
+        
+    \textbf{Funkcja statyczna} & 
+        tak
+        \\ \hline
+        
+    \textbf{Parametry wejściowe}  & 
+        \emph{\textbf{RGB*} rgb} -- wskaźnik na obiekt struktury \emph{RGB}
+        \\ \hline
+        
+    \textbf{Parametry wyjściowe} &
+        --
+        \\ \hline
+        
+  \end{tabular}
+\end{center}
+%\end{minipage}
+\vspace{0.5cm}
+%---------------function
+
+
+%---------------function
+\subsection{getLedIndex} 
+%\begin{minipage}{\textwidth}
+
+%description
+Funkcja służy do obliczania indeksu bloku pamięci diody w rejestrze przesuwnym. W związku z tym. Dzięki tej funkcji użytkownik biblioteki nie musi uwzględniać modelu pamięci rejestru przesuwnego układu \emph{tlc5947}, korzystając z niego tak samo, jak ze zwykłej tablicy bajtowej. 
+%description
+
+\begin{center}
+  \begin{tabular}{|L{\lcolumn}|L{\rcolumn}|}
+    \hline
+    
+    \textbf{Nazwa funkcji}  & \textit{
+        getLedIndex
+        } \\ \hline
+        
+    \textbf{Funkcja statyczna} & 
+        tak
+        \\ \hline
+        
+    \textbf{Parametry wejściowe}  & 
+        \emph{\textbf{uint8\_t} ledNumber} -- numer diody
+        \\ \hline
+        
+    \textbf{Parametry wyjściowe} &
+        \emph{\textbf{uint64\_t} ledAddress} -- indeks początku bloku pamięci diody w rejestrze przesuwnym
+        \\ \hline
+        
+  \end{tabular}
+\end{center}
+%\end{minipage}
+\vspace{0.5cm}
+%---------------function
+
+
+%---------------function
+\subsection{compileOddLedPattern} 
+%\begin{minipage}{\textwidth}
+
+%description
+Funkcja służy do kompilacji fragmentu pamięci dla diody o numerze nieparzystym, który będzie zawierał uporządkowane w odpowiedniej kolejności wartości dla kolorów czerwonego, zielonego i niebieskiego.
+Przykład działania funkcji:
+W przypadku, gdy Parametr wejsciowy \emph{\textbf{RGB} rgbSet} ma nastepujace wartosci:
+
+\begin{itemize}
+  \item{rgbSet.red   = 0x123}
+  \item{rgbSet.green = 0x456}
+  \item{rgbSet.blue  = 0x789}
+\end{itemize}
+             
+Funkcja zwróci wartość 64-bitową, która stanowi następujący fragment pamięci:
+
+\vspace{0.3cm}
+\hspace{0.3cm} \textbf{[00 00 00 89 67 45 23 01]}
+\vspace{0.3cm}
+
+Otrzymany w wyniku fragmnet jest później wkładany do tablicy \emph{txdata}, która jest przesyłana do rejestru przesuwnego. Z tego powodu, że otzymany fragment pamięci jest wkładany do tablicy \emph{txdata} za pomocą operacji logicznej \emph{OR}, wartości dla odpowiednich kolorów znajdują się na właściwych pozycjach, reszta fragmentu pamięci jest wypełniona zerami, żeby nie zmodyfikować wartości kolorów dla innych diod, które znajdują się w tablicy.
+
+Operację na pamięci w większości wykonywane są za pomoća operatorów logicznych \emph{AND}, \emph{OR} oraz przesunięć bitowych. W kodzie biblioteki znajduje się szczegółowy opis zmian, które odbywają się w pamięci.
+
+\vspace{0.3cm}
+\begin{lstlisting}[language=c,frame=single,caption={Fragment kodu, w którym przedstawiony jest komentarz ilustrujący efekt wykonywania operacji na pamięci}]
+  //compiling green color     
+  hex = 0;                    //     hex = [00 00 00 00 00 00 00 00]
+  hex = green & hex1Mask;     //     hex = [00 00 00 00 00 00 04 00]
+  hex = hex << 3 * POSITION;  //     hex = [00 00 00 00 00 40 00 00]
+  pattern = pattern | hex;    // pattern = [00 00 00 00 00 40 23 01]
+
+\end{lstlisting}
+
+%description
+
+
+\begin{center}
+  \begin{tabular}{|L{\lcolumn}|L{\rcolumn}|}
+    \hline
+    
+    \textbf{Nazwa funkcji}  & \textit{
+        compileEvenLedPattern
+        } \\ \hline
+        
+    \textbf{Funkcja statyczna} & 
+        tak
+        \\ \hline
+        
+    \textbf{Parametry wejściowe}  & 
+        \emph{\textbf{RGB} rgbSet} -- obiek struktury \emph{RGB}, który zawiera wartości dla odpowiednich kolorów
+        \\ \hline
+        
+    \textbf{Parametry wyjściowe} &
+        \emph{\textbf{uint64\_t} pattern} -- spreparowany fragment pamięci, który następnie zostanie włożony do rejestru presuwnego
+        \\ \hline
+        
+  \end{tabular}
+\end{center}
+%\end{minipage}
+\vspace{0.5cm}
+%---------------function
+
+
+
+%---------------function
+\subsection{compileEvenLedPattern} 
+%\begin{minipage}{\textwidth}
+
+%description
+Funkcja służy do kompilacji fragmentu pamięci dla diody o numerze parzystym, który będzie zawierał uporządkowane w odpowiedniej kolejności wartości dla kolorów czerwonego, zielonego i niebieskiego.
+Przykład działania funkcji:
+W przypadku, gdy Parametr wejsciowy \emph{\textbf{RGB} rgbSet} ma nastepujace wartosci:
+
+\begin{itemize}
+  \item{rgbSet.red   = 0x123}
+  \item{rgbSet.green = 0x456}
+  \item{rgbSet.blue  = 0x789}
+\end{itemize}
+             
+Funkcja zwróci wartość 64-bitową, która stanowi następujący fragment pamięci:
+
+\vspace{0.3cm}
+\hspace{0.3cm} \textbf{[00 00 00 90 78 56 34 21]}
+\vspace{0.3cm}
+
+Otrzymany w wyniku fragmnet jest później wkładany do tablicy \emph{txdata}, która jest przesyłana do rejestru przesuwnego. Z tego powodu, że otzymany fragment pamięci jest wkładany do tablicy \emph{txdata} za pomocą operacji logicznej \emph{OR}, wartości dla odpowiednich kolorów znajdują się na właściwych pozycjach, reszta fragmentu pamięci jest wypełniona zerami, żeby nie zmodyfikować wartości kolorów dla innych diod, które znajdują się w tablicy.
+
+Operację na pamięci w większości wykonywane są za pomoća operatorów logicznych \emph{AND}, \emph{OR} oraz przesunięć bitowych. W kodzie biblioteki znajduje się szczegółowy opis zmian, które odbywają się w pamięci.
+
+\vspace{0.3cm}
+\begin{lstlisting}[language=c,frame=single,caption={Fragment kodu, w którym przedstawiony jest komentarz ilustrujący efekt wykonywania operacji na pamięci}]
+  //compiling blue color    
+  hex = 0;                    //     hex = [00 00 00 00 00 00 00 00]
+  hex = blue & hex1Mask;      //     hex = [00 00 00 00 00 00 07 00]
+  hex = hex << 5 * POSITION;  //     hex = [00 00 00 00 70 00 00 00]
+  pattern = pattern | hex;    // pattern = [00 00 00 00 70 56 34 12]
+
+\end{lstlisting}
+
+%description
+
+
+\begin{center}
+  \begin{tabular}{|L{\lcolumn}|L{\rcolumn}|}
+    \hline
+    
+    \textbf{Nazwa funkcji}  & \textit{
+        compileEvenLedPattern
+        } \\ \hline
+        
+    \textbf{Funkcja statyczna} & 
+        tak
+        \\ \hline
+        
+    \textbf{Parametry wejściowe}  & 
+        \emph{\textbf{RGB} rgbSet} -- obiek struktury \emph{RGB}, który zawiera wartości dla odpowiednich kolorów
+        \\ \hline
+        
+    \textbf{Parametry wyjściowe} &
+        \emph{\textbf{uint64\_t} pattern} -- spreparowany fragment pamięci, który następnie zostanie włożony do rejestru presuwnego
+        \\ \hline
+        
+  \end{tabular}
+\end{center}
+%\end{minipage}
+\vspace{0.5cm}
+%---------------function
+
+
+
+%---------------function
+\subsection{insertLedRgb} 
+%\begin{minipage}{\textwidth}
+
+%description
+Funkcja służy do obliczania indeksu bloku pamięci diody w rejestrze przesuwnym. W związku z tym. Dzięki tej funkcji użytkownik biblioteki nie musi uwzględniać modelu pamięci rejestru przesuwnego układu \emph{tlc5947}, korzystając z niego tak samo, jak ze zwykłej tablicy bajtowej. 
+%description
+
+\begin{center}
+  \begin{tabular}{|L{\lcolumn}|L{\rcolumn}|}
+    \hline
+    
+    \textbf{Nazwa funkcji}  & \textit{
+        insertLedRgb
+        } \\ \hline
+        
+    \textbf{Funkcja statyczna} & 
+        tak
+        \\ \hline
+        
+    \textbf{Parametry wejściowe}  & 
+        \begin{itemize}
+        \item{\emph{\textbf{uint32\_t} ledNumber} -- number diody, której dotyczy działanie} 
+        \item{\emph{\textbf{uint64\_t} RGBpattern} -- spreparowany 64-bitowy fragment pamięci, zawierający odpowiednie wartości kolorów} 
+        \item{\emph{\textbf{uint8\_t*} tab} -- wskaźnik na tablicę \emph{txdata}, która zostanie później przesłana do rejestru przesuwnego} 
+        \end{itemize}
+        \\ \hline
+        
+    \textbf{Parametry wyjściowe} &
+        \emph{\textbf{int}} -- wartość \emph{0} mówi o skutecznym wykonaniu operacji; w przypadku błędu zwracana jest wartość \emph{-1}
+        \\ \hline
+        
+  \end{tabular}
+\end{center}
+%\end{minipage}
+\vspace{0.5cm}
+%---------------function
+
+
+
+%---------------function
+\subsection{getLedRGB} 
+%\begin{minipage}{\textwidth}
+
+%description
+Funkcja zwraca obiekt struktury \emph{\textbf{RGB}}, który zawiera wartości kolorów wybranej diody. Wartości są pobierane z tablicy \emph{txdata}, i wyciągane za pomocą operatorów logicznych \emph{AND}, \emph{OR} oraz przesunięć bitowych. W kodzie biblioteki znajduje się szczegółowy opis zmian, które odbywają się w pamięci.
+
+\vspace{0.3cm}
+\begin{lstlisting}[language=c,frame=single,caption={Fragment kodu, w którym przedstawiony jest komentarz ilustrujący efekt wykonywania operacji na pamięci}]
+  //getting red color
+  hex = pattern & (0x0F);        //        hex = [00 00 00 00 00 00 00 01]
+  hex = hex << 2 * POSITION;     //        hex = [00 00 00 00 00 00 01 00]
+  ledRGB.red = ledRGB.red | hex; // ledRgb.red = [00 00 00 00 00 00 01 00]
+  hex = 0;                       //        hex = [00 00 00 00 00 00 00 00]
+
+\end{lstlisting}
+%description
+
+\begin{center}
+  \begin{tabular}{|L{\lcolumn}|L{\rcolumn}|}
+    \hline
+    
+    \textbf{Nazwa funkcji}  & \textit{
+        getLedRGB
+        } \\ \hline
+        
+    \textbf{Funkcja statyczna} & 
+        nie
+        \\ \hline
+        
+    \textbf{Parametry wejściowe}  & 
+        \begin{itemize}
+        \item{\emph{\textbf{uint32\_t} ledNumber} -- number diody, której dotyczy działanie} 
+        \item{\emph{\textbf{uint64\_t} RGBpattern} -- spreparowany 64-bitowy fragment pamięci, zawierający odpowiednie wartości kolorów} 
+        \item{\emph{\textbf{uint8\_t*} tab} -- wskaźnik na tablicę \emph{txdata}, która zostanie później przesłana do rejestru przesuwnego} 
+        \end{itemize}
+        \\ \hline
+        
+    \textbf{Parametry wyjściowe} &
+        \emph{\textbf{RGB} ledRGB} -- obiekt struktury \emph{\textbf{RGB}}, który zawiera odpowiednie wartości kolorów czerwonego, zielonego i niebieskiego wybranej diody
+        \\ \hline
+        
+  \end{tabular}
+\end{center}
+%\end{minipage}
+\vspace{0.5cm}
+%---------------function
+
+
+
+%---------------function
+\subsection{setLedRGB} 
+%\begin{minipage}{\textwidth}
+
+%description
+Funkcja służy do ustawiana koloru wybranej diody. Funkcja korzysta z funkcji statycznych biblioteki: \emph{compileEvenLedPattern}, \emph{compileOddLedPattern}, \emph{insertLedRgb}
+%description
+
+\begin{center}
+  \begin{tabular}{|L{\lcolumn}|L{\rcolumn}|}
+    \hline
+    
+    \textbf{Nazwa funkcji}  & \textit{
+        setLedRGB
+        } \\ \hline
+        
+    \textbf{Funkcja statyczna} & 
+        nie
+        \\ \hline
+        
+    \textbf{Parametry wejściowe}  & 
+        \begin{itemize}
+        \item{\emph{\textbf{uint32\_t} ledNumber} -- number diody, której dotyczy działanie} 
+        \item{\emph{\textbf{RGB} rgbSet} -- obiekt struktury \emph{\textbf{RGB}}, który zawiera odpowiednie wartości kolorów czerwonego, zielonego i niebieskiego} 
+        \item{\emph{\textbf{uint8\_t*} tab} -- wskaźnik na tablicę \emph{txdata}, która zostanie później przesłana do rejestru przesuwnego} 
+        \end{itemize}
+        \\ \hline
+        
+    \textbf{Parametry wyjściowe} &
+        \emph{\textbf{int} result} -- wartość \emph{0} mówi o skutecznym wykonaniu operacji; w przypadku błędu zwracana jest wartość \emph{-1}
+        \\ \hline
+        
+  \end{tabular}
+\end{center}
+%\end{minipage}
+\vspace{0.5cm}
+%---------------function
+
+
+
+%---------------function
+\subsection{setLedRGB} 
+%\begin{minipage}{\textwidth}
+
+%description
+Funkcja służy do wyświetlania zawartości tablicy \emph{txdata} na standardowym wyjściu.
+%description
+
+\begin{center}
+  \begin{tabular}{|L{\lcolumn}|L{\rcolumn}|}
+    \hline
+    
+    \textbf{Nazwa funkcji}  & \textit{
+        printLedDataArray
+        } \\ \hline
+        
+    \textbf{Funkcja statyczna} & 
+        nie
+        \\ \hline
+        
+    \textbf{Parametry wejściowe}  & 
+        \emph{\textbf{uint8\_t*} tab} -- wskaźnik na tablicę \emph{txdata}, która zawiera wartości kolorów wszystkich diod
+        \\ \hline
+        
+    \textbf{Parametry wyjściowe} &
+        --
+        \\ \hline
+        
+  \end{tabular}
+\end{center}
+%\end{minipage}
+\vspace{0.5cm}
+%---------------function
+
+
+% ************************************************************************************************
+%                                           Section
+% ************************************************************************************************
+\section{Aplikacja graficzna \emph{LedSimulator}}
+
+
+
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/ledSimulator.png} 
+    \caption{Aplikacja graficzna \emph{LedSimulator}: przykładowe kolory}
+    \label{fig:ledSimulator}
+\end{figure}
+
+
+Na podanym zrzucie ekranu (rys. \ref{fig:ledSimulator}) jest przedstawione okno główne alikacji graficznej \emph{LedSimulator}. Aplikacja znajduje się w trybie \emph{Color calibration}. Pokazany jest układ zawierający 8 diod RGB. Diody są ponumerowane od \emph{0}. Każdej diodzie przysługują 3 pola tekstowe:
+
+\begin{itemize}
+  \item{\emph{red}}
+  \item{\emph{green}}
+  \item{\emph{blue}}
+\end{itemize}
+
+W każde pole użytkownik może wprowadzić wartość od \emph{0} do \emph{255}. Wprowadzane wartości są sprawdzane za pomocą wyrażeń regularnych, dzięki czemu nie jest możliwe wprowadzenie innych znaków, niż cyfry, oraz liczb, większych niż 255.
+
+Kolory diod są odświeżane w momencie zmiany wartości w odpowiednim polu. Domyślną wartością, przechowywaną w każdym polu, jest \emph{0}, co oznacza brak koloru (rys. \ref{fig:ledSimulator2}).
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/ledSimulator2.png} 
+    \caption{Aplikacja graficzna \emph{LedSimulator}: domyślny stan diod}
+    \label{fig:ledSimulator2}
+\end{figure}
+
+
+Aplikacja może pracować w dwóch trybach (rys. \ref{fig:modes}):
+
+\begin{itemize}
+  \item{\emph{Color calibration}}
+  \item{\emph{TLC5947 simulation}}
+\end{itemize}
+
+Tryb \emph{Color calibration} został opisany wyżej.
+
+Tryb \emph{TLC5947 simulation} służy do testowania działania biblioteki w przypadku braku dostępu do układu \emph{Texas Instruments TLC5947}. Przy wyborze tego trybu uruchomiony zostanie scenariusz, umieszczony w funckcji \emph{runLedScenario}. 
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Figures/modes.png} 
+    \caption{Wybór trybu działania aplikacji \emph{LedSimulator}}
+    \label{fig:modes}
+\end{figure}
 
 
 %opcjonalnie możliwe tu pojawienie spis rysunków i tabel

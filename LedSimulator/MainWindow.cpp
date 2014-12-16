@@ -14,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
     hBoxLayout = new QHBoxLayout();
     window->setLayout(hBoxLayout);
     int border = 1;
-    statusBarText = new QLabel("Mode: Calibrator");
+    statusBarText = new QLabel("Mode: color calibration");
     this->statusBar()->addWidget(statusBarText);
 
     int lineEditsCounter = 0;
@@ -138,6 +138,11 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::runLedScenario()
+{
+
+}
+
 void MainWindow::on_actionColor_calibrator_triggered()
 {
     for(int i=0; i<LED_NUMBER*LINE_EDITS_NUMBER; ++i)
@@ -145,7 +150,7 @@ void MainWindow::on_actionColor_calibrator_triggered()
         lineEdits[i]->setReadOnly(false);
         lineEdits[i]->clear();
     }
-    statusBarText->setText("Mode: calibrator");
+    statusBarText->setText("Mode: color calibration");
 }
 
 void MainWindow::on_actionTLC5947_Simulator_triggered()
@@ -155,5 +160,5 @@ void MainWindow::on_actionTLC5947_Simulator_triggered()
         lineEdits[i]->setReadOnly(true);
         lineEdits[i]->clear();
     }
-    statusBarText->setText("Mode: tlc5947 simulator");
+    statusBarText->setText("Mode: tlc5947 simulation");
 }

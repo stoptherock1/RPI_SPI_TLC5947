@@ -5,7 +5,7 @@ static const uint64_t oddCleanMask  = ~(0xFFFFFFFF0F);	// 0xFFFFFF00000000F0
 
 #define POSITION 4 		//used for placing HEX value at certain position in memory
 
-static void cleanRGB(RGB *rgb)
+static void cleanRGB(RGB* rgb)
 {
 	rgb->red = 0;
 	rgb->green = 0;
@@ -331,7 +331,7 @@ int setLedRGB(uint32_t ledNumber, RGB rgbSet, uint8_t* tab)
 	return result;
 }
 
-void printLedDataArray(uint8_t *tab)
+void printLedDataArray(uint8_t* tab)
 {
 	int i=SIZE-1;
 	
