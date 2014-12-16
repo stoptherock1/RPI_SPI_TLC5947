@@ -347,58 +347,66 @@ void printLedDataArray(uint8_t *tab)
 
 
 
-int main()
-{
-	// printf("sizeof(uint64_t): %lu\n", sizeof(uint64_t));
-	printf("\n");
-	uint8_t tab[SIZE];
-	memset(tab, 0, SIZE);
+// int main()
+// {
+// 	// printf("sizeof(uint64_t): %lu\n", sizeof(uint64_t));
+// 	printf("\n");
+// 	uint8_t tab[SIZE];
+// 	memset(tab, 0, SIZE);
 
-	// int i = 0;
+// 	// int i = 0;
 
-	RGB rgb0;
-	rgb0.red   = 0x123;
-	rgb0.green = 0x456;
-	rgb0.blue  = 0x789;
+// 	// RGB rgb0;
+// 	// rgb0.red   = 0x123;
+// 	// rgb0.green = 0x456;
+// 	// rgb0.blue  = 0x789;
 
-	// RGB rgb1;
-	// rgb1.red   = 0x78D;
-	// rgb1.green = 0x9C0;
-	// rgb1.blue  = 0xBAF; 
+// 	// RGB rgb1;
+// 	// rgb1.red   = 0x78D;
+// 	// rgb1.green = 0x9C0;
+// 	// rgb1.blue  = 0xBAF; 
 
-	// RGB rgb2;
-	// rgb2.red   = 0x578;
-	// rgb2.green = 0x892;
-	// rgb2.blue  = 0x7CD; 
+// 	// RGB rgb2;
+// 	// rgb2.red   = 0x578;
+// 	// rgb2.green = 0x892;
+// 	// rgb2.blue  = 0x7CD; 
 
-	// RGB rgb3;
-	// rgb3.red   = 0x25F;
-	// rgb3.green = 0x7EC;
-	// rgb3.blue  = 0xFC2; 
+// 	RGB rgb3;
+// 	rgb3.red   = 0xFFF;
+// 	rgb3.green = 0x0;
+// 	rgb3.blue  = 0xFFF; 
 
 		
-	setLedRGB(0, rgb0, tab);
-	setLedRGB(1, rgb0, tab);
-	setLedRGB(2, rgb0, tab);
-	setLedRGB(3, rgb0, tab);
-	setLedRGB(4, rgb0, tab);
-	setLedRGB(5, rgb0, tab);
-	setLedRGB(6, rgb0, tab);
-	setLedRGB(7, rgb0, tab);
+// 	// setLedRGB(0, rgb0, tab);
+// 	// setLedRGB(1, rgb0, tab);
+// 	// setLedRGB(2, rgb0, tab);
+// 	// setLedRGB(3, rgb0, tab);
+// 	// setLedRGB(4, rgb0, tab);
+// 	// setLedRGB(5, rgb0, tab);
+// 	// setLedRGB(6, rgb0, tab);
+// 	// setLedRGB(7, rgb0, tab);
 
-	RGB ledRGB = getLedRGB(2, tab);
+// 	// RGB ledRGB = getLedRGB(2, tab);
 
-	printf("red 2: \t\t%llx\n", ledRGB.red);
-	printf("green 2: \t%llx\n", ledRGB.green);
-	printf("blue 2: \t%llx\n\n", ledRGB.blue);
+// 	// printf("red 2: \t\t%llx\n", ledRGB.red);
+// 	// printf("green 2: \t%llx\n", ledRGB.green);
+// 	// printf("blue 2: \t%llx\n\n", ledRGB.blue);
 
-	ledRGB = getLedRGB(5, tab);
+// 	// ledRGB = getLedRGB(5, tab);
 
-	printf("red 5: \t\t%llx\n", ledRGB.red);
-	printf("green 5: \t%llx\n", ledRGB.green);
-	printf("blue 5: \t%llx\n\n", ledRGB.blue);
+// 	// printf("red 5: \t\t%llx\n", ledRGB.red);
+// 	// printf("green 5: \t%llx\n", ledRGB.green);
+// 	// printf("blue 5: \t%llx\n\n", ledRGB.blue);
 
-	printLedDataArray(tab);
+// 	int i=0;
+// 	for( ; i<0xFFF; ++i)
+// 	{
+// 		setLedRGB(7,rgb1, tab);
+// 	}
+
+
+
+// 	printLedDataArray(tab);
 	
-	return 0;
-}
+// 	return 0;
+// }

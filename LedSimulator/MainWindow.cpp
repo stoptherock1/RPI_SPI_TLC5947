@@ -11,10 +11,11 @@ MainWindow::MainWindow(QWidget *parent) :
     diameter = 100;
 
     window = new QWidget();
-
     hBoxLayout = new QHBoxLayout();
     window->setLayout(hBoxLayout);
     int border = 1;
+    statusBarText = new QLabel("Mode: Calibrator");
+    this->statusBar()->addWidget(statusBarText);
 
     int lineEditsCounter = 0;
     for(int i=0; i<LED_NUMBER; ++i)
@@ -65,7 +66,7 @@ MainWindow::MainWindow(QWidget *parent) :
             lineEdits[lineEditsCounter]->setValidator( new QRegExpValidator(reNumbers) );
 
             connect(lineEdits[lineEditsCounter], SIGNAL(textChanged(QString)),
-                    this, SLOT(setLedColor(QString)) );
+                    this, SLOT(ledColorChanged(QString)) );
             ++lineEditsCounter;
         }
 
@@ -81,19 +82,28 @@ MainWindow::MainWindow(QWidget *parent) :
     this->move( QApplication::desktop()->screen()->rect().center() - window->rect().center());
 }
 
-void MainWindow::setLedColor(QString text)
+
+void MainWindow::ledColorChanged(QString text)
 {
     ledLineEdit *lineEdit = (ledLineEdit *) QObject::sender();
     uint32_t ledNumber = lineEdit->getNumber();
-    uint8_t ledColorCode = lineEdit->getColorCode();
-    uint8_t ledColor = text.toInt();
+    uint8_t colorCode = lineEdit->getColorCode();
+    uint8_t color255 = text.toInt();
+    setLedColor(ledNumber, colorCode, color255);
+}
 
-    if(0==ledColorCode)
-        leds[ledNumber].red = ledColor;
-    else if(1==ledColorCode)
-        leds[ledNumber].green = ledColor;
+void MainWindow::setLedColor(uint32_t ledNumber, uint8_t colorCode, uint8_t color255)
+{
+    qDebug() << "ledNumber" << ledNumber;
+    qDebug() << "colorCode" << colorCode;
+    qDebug() << "color255" << color255 << "\n";
+
+    if(0==colorCode)
+        leds[ledNumber].red = color255;
+    else if(1==colorCode)
+        leds[ledNumber].green = color255;
     else
-        leds[ledNumber].blue = ledColor;
+        leds[ledNumber].blue = color255;
 
     QColor color(leds[ledNumber].red,
                  leds[ledNumber].green,
@@ -126,4 +136,24 @@ MainWindow::~MainWindow()
     }
     delete hBoxLayout;
     delete ui;
+}
+
+void MainWindow::on_actionColor_calibrator_triggered()
+{
+    for(int i=0; i<LED_NUMBER*LINE_EDITS_NUMBER; ++i)
+    {
+        lineEdits[i]->setReadOnly(false);
+        lineEdits[i]->clear();
+    }
+    statusBarText->setText("Mode: calibrator");
+}
+
+void MainWindow::on_actionTLC5947_Simulator_triggered()
+{
+    for(int i=0; i<LED_NUMBER*LINE_EDITS_NUMBER; ++i)
+    {
+        lineEdits[i]->setReadOnly(true);
+        lineEdits[i]->clear();
+    }
+    statusBarText->setText("Mode: tlc5947 simulator");
 }

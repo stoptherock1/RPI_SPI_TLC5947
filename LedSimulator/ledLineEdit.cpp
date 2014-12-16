@@ -12,7 +12,7 @@ void ledLineEdit::setNumber(const uint32_t &value)
 
 uint8_t ledLineEdit::getColorCode() const
 {
-    return colorCode;
+    return colorCode;       // 0-red, 1-green, 2-blue
 }
 
 void ledLineEdit::setColorCode(const uint8_t &value)

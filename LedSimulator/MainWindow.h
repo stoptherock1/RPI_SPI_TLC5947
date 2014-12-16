@@ -9,6 +9,9 @@
 #include <QLineEdit>
 #include <QVBoxLayout>
 #include <QLabel>
+#include <QMenu>
+#include <QMenuBar>
+#include <QAction>
 #include "renderarea.h"
 #include "ledLineEdit.h"
 #include "../tlc5947_lib/RGB.h"
@@ -44,11 +47,17 @@ private:
     QLabel *labelsPixmaps[LED_NUMBER];
     QLabel *ledNames[LED_NUMBER];
     QLabel *hexPrefixes[LED_NUMBER*LINE_EDITS_NUMBER];
+    QLabel *statusBarText;
     ledLineEdit *lineEdits[LED_NUMBER*LINE_EDITS_NUMBER];
     RGB leds[LED_NUMBER];
 
+    void setLedColor(uint32_t ledNumber, uint8_t ledColorCode, uint8_t ledColor);
+
 public slots:
-    void setLedColor(QString text);
+    void ledColorChanged(QString text);
+private slots:
+    void on_actionColor_calibrator_triggered();
+    void on_actionTLC5947_Simulator_triggered();
 };
 
 #endif // MAINWINDOW_H
