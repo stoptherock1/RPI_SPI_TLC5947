@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  17 DEC 2014 00:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  17 DEC 2014 23:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -466,7 +466,17 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/ucs/data/uni-1.def
 File: uni-1.def 2013/05/13 UCS: Unicode data U+0100..U+01FF
-) [1
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/ucs/data/uni-0.def
+File: uni-0.def 2013/05/13 UCS: Unicode data U+0000..U+00FF
+)
+LaTeX Font Info:    External font `plex10' loaded for size
+(Font)              <14.4> on input line 111.
+LaTeX Font Info:    External font `plex10' loaded for size
+(Font)              <10> on input line 111.
+LaTeX Font Info:    External font `plex10' loaded for size
+(Font)              <7> on input line 111.
+ [1
 Non-PDF special ignored!
 
 
@@ -481,32 +491,47 @@ Non-PDF special ignored!
  [1] [2
 
 
-]
-(/usr/local/texlive/2014/texmf-dist/tex/latex/ucs/data/uni-0.def
-File: uni-0.def 2013/05/13 UCS: Unicode data U+0000..U+00FF
-) [3] [4
+] [3] [4
 
 
 ]
 Rozdzia\PlPrIeC {\l } 1.
-
-Underfull \hbox (badness 1789) in paragraph at lines 154--154
-[]|\T1/cmr/m/n/12 Broadcom BCM2835 (CPU + GPU + DSP +
- []
-
 [5] [6
 
 
 ]
 Rozdzia\PlPrIeC {\l } 2.
+<Figures/tlc_array.png, id=37, 1498.59875pt x 249.93375pt>
+File: Figures/tlc_array.png Graphic file (type png)
 
-Overfull \hbox (10.68604pt too wide) in paragraph at lines 194--194
+<use Figures/tlc_array.png>
+Package pdftex.def Info: Figures/tlc_array.png used on input line 161.
+(pdftex.def)             Requested size: 455.24408pt x 75.92267pt.
+
+<Figures/tlc_2leds.png, id=39, 642.2394pt x 120.45pt>
+File: Figures/tlc_2leds.png Graphic file (type png)
+
+<use Figures/tlc_2leds.png>
+Package pdftex.def Info: Figures/tlc_2leds.png used on input line 172.
+(pdftex.def)             Requested size: 455.24408pt x 85.3804pt.
+ [7 <./Figures/tlc_array.png> <./Figures/tlc_2leds.png>]
+Underfull \hbox (badness 1789) in paragraph at lines 192--192
+[]|\T1/cmr/m/n/12 Broadcom BCM2835 (CPU + GPU + DSP +
+ []
+
+[8]
+Rozdzia\PlPrIeC {\l } 3.
+
+Overfull \hbox (10.68604pt too wide) in paragraph at lines 228--228
 []\T1/cmr/bx/n/17.28 Aplikacja gra-ficz-na \T1/cmr/bx/it/17.28 Led-Si-mu-la-tor
  \T1/cmr/bx/n/17.28 do sy-mu-la-cji dzia-
  []
 
-[7]
-LaTeX Font Info:    Try loading font information for T1+pcr on input line 199.
+[9
+
+
+]
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 233.
  (/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
@@ -516,184 +541,190 @@ File: lstlang1.sty 2014/03/04 1.5c listings language file
 (/usr/local/texlive/2014/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2014/03/04 1.5c listings language file
 )
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 234--254
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 268--288
 []$[]$ 
  []
 
 
 Underfull \vbox (badness 1107) has occurred while \output is active []
 
- [8]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 280.
+ [10]
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 294--308
+[]$[]$ 
+ []
 
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 314.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 280.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 314.
 
-<Figures/spi3.png, id=49, 1673.25125pt x 982.67125pt>
+<Figures/spi3.png, id=63, 1673.25125pt x 982.67125pt>
 File: Figures/spi3.png Graphic file (type png)
  <use Figures/spi3.png>
-Package pdftex.def Info: Figures/spi3.png used on input line 291.
+Package pdftex.def Info: Figures/spi3.png used on input line 325.
 (pdftex.def)             Requested size: 318.66946pt x 187.1443pt.
 
-[9] [10 <./Figures/spi3.png>]
-Rozdzia\PlPrIeC {\l } 3.
-LaTeX Font Info:    Try loading font information for OMS+pcr on input line 317.
+[11] [12 <./Figures/spi3.png>]
+Rozdzia\PlPrIeC {\l } 4.
+LaTeX Font Info:    Try loading font information for OMS+pcr on input line 351.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/omspcr.fd
 File: omspcr.fd 
 )
 LaTeX Font Info:    Font shape `OMS/pcr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 317.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 351.
 LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <12> not available
-(Font)              Font shape `T1/pcr/b/n' tried instead on input line 317.
- [11
+(Font)              Font shape `T1/pcr/b/n' tried instead on input line 351.
+ [13
 
 
 ]
-Overfull \hbox (34.93042pt too wide) in paragraph at lines 347--348
+Overfull \hbox (34.93042pt too wide) in paragraph at lines 381--382
 []\T1/pcr/b/n/12 static int \T1/pcr/m/n/12 insertLedRgb(\T1/pcr/b/n/12 uint32_t
  \T1/pcr/m/n/12 ledNumber, \T1/pcr/b/n/12 uint64_t \T1/pcr/m/n/12 RGBpattern,
  []
 
-[12] [13] [14]
+[14] [15] [16]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [15]
-[16] <Figures/ledSimulator.png, id=82, 1017.8025pt x 409.53pt>
+ [17]
+[18] <Figures/ledSimulator.png, id=96, 1017.8025pt x 409.53pt>
 File: Figures/ledSimulator.png Graphic file (type png)
 
 <use Figures/ledSimulator.png>
-Package pdftex.def Info: Figures/ledSimulator.png used on input line 736.
+Package pdftex.def Info: Figures/ledSimulator.png used on input line 770.
 (pdftex.def)             Requested size: 455.24408pt x 183.17448pt.
 
-<Figures/ledSimulator2.png, id=83, 1017.8025pt x 409.53pt>
+<Figures/ledSimulator2.png, id=97, 1017.8025pt x 409.53pt>
 File: Figures/ledSimulator2.png Graphic file (type png)
 
 <use Figures/ledSimulator2.png>
-Package pdftex.def Info: Figures/ledSimulator2.png used on input line 756.
+Package pdftex.def Info: Figures/ledSimulator2.png used on input line 790.
 (pdftex.def)             Requested size: 455.24408pt x 183.17448pt.
- [17 <./Figures/ledSimulator.png>]
-<Figures/modes.png, id=89, 366.36874pt x 154.5775pt>
+ [19 <./Figures/ledSimulator.png>]
+<Figures/modes.png, id=102, 366.36874pt x 154.5775pt>
 File: Figures/modes.png Graphic file (type png)
  <use Figures/modes.png>
-Package pdftex.def Info: Figures/modes.png used on input line 775.
+Package pdftex.def Info: Figures/modes.png used on input line 809.
 (pdftex.def)             Requested size: 227.62204pt x 96.03989pt.
 
-[18 <./Figures/ledSimulator2.png> <./Figures/modes.png>]
+[20 <./Figures/ledSimulator2.png> <./Figures/modes.png>]
 (./dyplom-inz-utf8-unix.lof)
 \tf@lof=\write5
 \openout5 = `dyplom-inz-utf8-unix.lof'.
 
- [19
+ [21
 
 
-] [20
+] [22
 
 
 ]
  .
 
-Overfull \hbox (25.62836pt too wide) in paragraph at lines 795--796
+Overfull \hbox (25.62836pt too wide) in paragraph at lines 829--830
 []\T1/cmr/m/n/12 Strona in-ter-ne-to-wa: $\T1/pcr/m/n/12 http : / / en . wikipe
 dia . org / wiki / Job-[]shop _ scheduling$\T1/cmr/m/n/12 ,
  []
 
 
-Overfull \hbox (20.03201pt too wide) in paragraph at lines 797--798
+Overfull \hbox (20.03201pt too wide) in paragraph at lines 831--832
 []\T1/cmr/m/n/12 M. So-bo-lew-ski, $\T1/pcr/m/n/12 http : / / www . ioz . pwr .
  wroc . pl / pracownicy / kuchta / Marek %
  []
 
 
-Overfull \hbox (13.85045pt too wide) in paragraph at lines 799--800
+Overfull \hbox (13.85045pt too wide) in paragraph at lines 833--834
 []\T1/cmr/m/n/12 C. Smut-nic-ki, \T1/cmr/m/it/12 Al-go-ryt-my sze-re-go-wa-nia 
 za-da«\T1/cmr/m/n/12 , $\T1/pcr/m/n/12 http : / / www . kierunkizamawiane .
  []
 
 
-Overfull \hbox (27.63765pt too wide) in paragraph at lines 801--802
+Overfull \hbox (27.63765pt too wide) in paragraph at lines 835--836
 []\T1/cmr/m/n/12 Lekcja \T1/cmr/m/it/12 The Knap-sack Pro-blem\T1/cmr/m/n/12 , 
 $\T1/pcr/m/n/12 http : / / www . es . ele . tue . nl / education / 5MC10 /
  []
 
 
-Overfull \hbox (3.52837pt too wide) in paragraph at lines 803--804
+Overfull \hbox (3.52837pt too wide) in paragraph at lines 837--838
 []\T1/cmr/m/n/12 Strona in-ter-ne-to-wa: $\T1/pcr/m/n/12 http : / / en . wikipe
 dia . org / wiki / Knapsack _ problem$\T1/cmr/m/n/12 ,
  []
 
 
-Overfull \hbox (28.93706pt too wide) in paragraph at lines 805--806
+Overfull \hbox (28.93706pt too wide) in paragraph at lines 839--840
 []\T1/cmr/m/n/12 D. Pi-sin-ger, \T1/cmr/m/it/12 Al-go-ri-thms For Knap-sack Pro
 -blems\T1/cmr/m/n/12 , $\T1/pcr/m/n/12 http : / / www . diku . dk / ~pisinger /
 
  []
 
 
-Overfull \hbox (29.06528pt too wide) in paragraph at lines 807--808
+Overfull \hbox (29.06528pt too wide) in paragraph at lines 841--842
 []\T1/cmr/m/n/12 Strona in-ter-ne-to-wa: $\T1/pcr/m/n/12 http : / / en . wikipe
 dia . org / wiki / Travelling _ salesman _
  []
 
 
-Overfull \hbox (66.46025pt too wide) in paragraph at lines 809--810
+Overfull \hbox (66.46025pt too wide) in paragraph at lines 843--844
 []\T1/cmr/m/n/12 Shen Lin, \T1/cmr/m/it/12 Com-pu-ter So-lu-tions of the Tra-ve
 -ling Sa-le-sman Pro-blem\T1/cmr/m/n/12 , $\T1/pcr/m/n/12 http : / / alcatel-[]
 lucent .
  []
 
 
-Overfull \hbox (32.2122pt too wide) in paragraph at lines 811--812
+Overfull \hbox (32.2122pt too wide) in paragraph at lines 845--846
 \T1/cmr/m/it/12 for the tra-ve-ling sa-le-sman pro-blem\T1/cmr/m/n/12 , $\T1/pc
 r/m/n/12 http : / / dspace . mit . edu / bitstream / handle /
  []
 
 
-Overfull \hbox (21.86528pt too wide) in paragraph at lines 813--814
+Overfull \hbox (21.86528pt too wide) in paragraph at lines 847--848
 []\T1/cmr/m/n/12 Strona in-ter-ne-to-wa: $\T1/pcr/m/n/12 http : / / www . princ
 eton . edu / ~achaney / tmve / wiki100k /
  []
 
-[21] (./dyplom-inz-utf8-unix.aux) ) 
+[23] (./dyplom-inz-utf8-unix.aux) ) 
 Here is how much of TeX's memory you used:
- 6917 strings out of 493117
- 91346 string characters out of 6135433
- 267592 words of memory out of 5000000
- 10195 multiletter control sequences out of 15000+600000
- 26009 words of font info for 58 fonts, out of 8000000 for 9000
+ 6952 strings out of 493117
+ 91888 string characters out of 6135433
+ 267790 words of memory out of 5000000
+ 10223 multiletter control sequences out of 15000+600000
+ 30717 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,15n,58p,894b,1244s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,15n,58p,894b,1243s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2014/texmf-dist/fonts/en
 c/dvips/cm-super/cm-super-t1.enc}{/usr/local/texlive/2014/texmf-dist/fonts/enc/
 dvips/base/8r.enc}{/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/pl/plms.e
-nc}</usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pf
-b></usr/local/texlive/2014/texmf-dist/fonts/type1/public/pl/plsy10.pfb></usr/lo
-cal/texlive/2014/texmf-dist/fonts/type1/public/cm-super/sfbi1095.pfb></usr/loca
-l/texlive/2014/texmf-dist/fonts/type1/public/cm-super/sfbi1200.pfb></usr/local/
-texlive/2014/texmf-dist/fonts/type1/public/cm-super/sfbi1728.pfb></usr/local/te
-xlive/2014/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local/texl
-ive/2014/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texliv
-e/2014/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/
-2014/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/20
-14/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb></usr/local/texlive/2014
-/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/texlive/2014/t
-exmf-dist/fonts/type1/public/cm-super/sfcc1728.pfb></usr/local/texlive/2014/tex
-mf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2014/texmf
--dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2014/texmf-d
-ist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2014/texmf-dis
-t/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2014/texmf-dist/
-fonts/type1/public/cm-super/sfrm2074.pfb></usr/local/texlive/2014/texmf-dist/fo
-nts/type1/public/cm-super/sfti1200.pfb></usr/local/texlive/2014/texmf-dist/font
-s/type1/urw/courier/ucrb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/
-urw/courier/ucrr8a.pfb>
-Output written on dyplom-inz-utf8-unix.pdf (23 pages, 488076 bytes).
+nc}{/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/pl/plmi.enc}</usr/local/
+texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/t
+exlive/2014/texmf-dist/fonts/type1/public/pl/plmi12.pfb></usr/local/texlive/201
+4/texmf-dist/fonts/type1/public/pl/plmi8.pfb></usr/local/texlive/2014/texmf-dis
+t/fonts/type1/public/pl/plsy10.pfb></usr/local/texlive/2014/texmf-dist/fonts/ty
+pe1/public/cm-super/sfbi1095.pfb></usr/local/texlive/2014/texmf-dist/fonts/type
+1/public/cm-super/sfbi1200.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/
+public/cm-super/sfbi1728.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/pu
+blic/cm-super/sfbx1095.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/publ
+ic/cm-super/sfbx1200.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public
+/cm-super/sfbx1440.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/c
+m-super/sfbx1728.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/cm-
+super/sfbx2074.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/cm-su
+per/sfbx2488.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/cm-supe
+r/sfcc1728.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/cm-super/
+sfrm0600.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/cm-super/sf
+rm0800.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/cm-super/sfrm
+1000.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/cm-super/sfrm12
+00.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/cm-super/sfrm1440
+.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/cm-super/sfrm2074.p
+fb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb
+></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/l
+ocal/texlive/2014/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb>
+Output written on dyplom-inz-utf8-unix.pdf (25 pages, 583964 bytes).
 PDF statistics:
- 171 PDF objects out of 1000 (max. 8388607)
- 116 compressed objects within 2 object streams
+ 195 PDF objects out of 1000 (max. 8388607)
+ 131 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

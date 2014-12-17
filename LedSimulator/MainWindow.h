@@ -52,7 +52,7 @@ private:
     RGB leds[LED_NUMBER];
 
     void setLedColor(uint32_t ledNumber, uint8_t ledColorCode, uint8_t ledColor);
-    void runLedScenatio();
+    void runLedScenario();
 
 public slots:
     void ledColorChanged(QString text);

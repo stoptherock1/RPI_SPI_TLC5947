@@ -1,22 +1,23 @@
 \contentsline {chapter}{\hspace {0.64cm}Wst\IeC {\k e}p}{1}
-\contentsline {chapter}{\numberline {1}Opis sprz\IeC {\k e}tu}{5}
-\contentsline {section}{\numberline {1.1}Uk\IeC {\l }ad \emph {Texas Intruments tlc5947}}{5}
-\contentsline {section}{\numberline {1.2}Mikrokomputer \emph {Raspberry Pi}}{5}
-\contentsline {chapter}{\numberline {2}Opis wybranych technologii}{7}
-\contentsline {section}{\numberline {2.1}Biblioteka do obs\IeC {\l }ugi uk\IeC {\l }adu \emph {Texas Intruments tlc5947}}{7}
-\contentsline {section}{\numberline {2.2}Aplikacja graficzna \emph {LedSimulator} do symulacji dzia\IeC {\l }ania systemu}{7}
-\contentsline {section}{\numberline {2.3}Programowa konfiguracja \emph {Raspberry Pi}}{8}
-\contentsline {section}{\numberline {2.4}Interfejs komunikacyjny \emph {SPI}}{9}
-\contentsline {chapter}{\numberline {3}Implementacja}{11}
-\contentsline {section}{\numberline {3.1}Biblioteka do obs\IeC {\l }ugi uk\IeC {\l }adu \emph {Texas Intruments tlc5947}}{11}
-\contentsline {subsection}{\numberline {3.1.1}cleanRGB}{12}
-\contentsline {subsection}{\numberline {3.1.2}getLedIndex}{12}
-\contentsline {subsection}{\numberline {3.1.3}compileOddLedPattern}{13}
-\contentsline {subsection}{\numberline {3.1.4}compileEvenLedPattern}{13}
-\contentsline {subsection}{\numberline {3.1.5}insertLedRgb}{14}
-\contentsline {subsection}{\numberline {3.1.6}getLedRGB}{15}
-\contentsline {subsection}{\numberline {3.1.7}setLedRGB}{16}
-\contentsline {subsection}{\numberline {3.1.8}setLedRGB}{17}
-\contentsline {section}{\numberline {3.2}Aplikacja graficzna \emph {LedSimulator}}{17}
-\contentsline {chapter}{\hspace {0.64cm}Spis rysunk\'ow}{18}
-\contentsline {chapter}{\numberline {}Literatura}{21}
+\contentsline {chapter}{\numberline {1}Cel pracy}{5}
+\contentsline {chapter}{\numberline {2}Opis sprz\IeC {\k e}tu}{7}
+\contentsline {section}{\numberline {2.1}Uk\IeC {\l }ad \emph {Texas Intruments tlc5947}}{7}
+\contentsline {section}{\numberline {2.2}Mikrokomputer \emph {Raspberry Pi}}{8}
+\contentsline {chapter}{\numberline {3}Opis wybranych technologii}{9}
+\contentsline {section}{\numberline {3.1}Biblioteka do obs\IeC {\l }ugi uk\IeC {\l }adu \emph {Texas Intruments tlc5947}}{9}
+\contentsline {section}{\numberline {3.2}Aplikacja graficzna \emph {LedSimulator} do symulacji dzia\IeC {\l }ania systemu}{9}
+\contentsline {section}{\numberline {3.3}Programowa konfiguracja \emph {Raspberry Pi}}{10}
+\contentsline {section}{\numberline {3.4}Interfejs komunikacyjny \emph {SPI}}{11}
+\contentsline {chapter}{\numberline {4}Implementacja}{13}
+\contentsline {section}{\numberline {4.1}Biblioteka do obs\IeC {\l }ugi uk\IeC {\l }adu \emph {Texas Intruments tlc5947}}{13}
+\contentsline {subsection}{\numberline {4.1.1}cleanRGB}{14}
+\contentsline {subsection}{\numberline {4.1.2}getLedIndex}{14}
+\contentsline {subsection}{\numberline {4.1.3}compileOddLedPattern}{15}
+\contentsline {subsection}{\numberline {4.1.4}compileEvenLedPattern}{15}
+\contentsline {subsection}{\numberline {4.1.5}insertLedRgb}{16}
+\contentsline {subsection}{\numberline {4.1.6}getLedRGB}{17}
+\contentsline {subsection}{\numberline {4.1.7}setLedRGB}{18}
+\contentsline {subsection}{\numberline {4.1.8}setLedRGB}{19}
+\contentsline {section}{\numberline {4.2}Aplikacja graficzna \emph {LedSimulator}}{19}
+\contentsline {chapter}{\hspace {0.64cm}Spis rysunk\'ow}{20}
+\contentsline {chapter}{\numberline {}Literatura}{23}

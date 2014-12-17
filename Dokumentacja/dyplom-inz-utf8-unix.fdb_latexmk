@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1418772882 "dyplom-inz-utf8-unix.tex" "dyplom-inz-utf8-unix.pdf" "dyplom-inz-utf8-unix" 1418772884
+["pdflatex"] 1418854913 "dyplom-inz-utf8-unix.tex" "dyplom-inz-utf8-unix.pdf" "dyplom-inz-utf8-unix" 1418854916
   "/usr/local/texlive/2014/texmf-dist/tex/context/base/supp-pdf.mkii" 1337017135 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/etexcmds.sty" 1335995445 7612 c47308d923ec19888707b0f1792b326a ""
   "/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/ifluatex.sty" 1303254447 7324 11d14f318d865f420e692d4e6c9c18c3 ""
@@ -69,15 +69,17 @@
   "Figures/ledSimulator2.png" 1418771296 45683 f6393effabf34747ee19d98e44c7a28c ""
   "Figures/modes.png" 1418770438 22465 04af07c0018316bc2b0ecf217a6893d9 ""
   "Figures/spi3.png" 1417605445 84506 ab5259d7a4dfb91b93df54115765abd8 ""
-  "dyplom-inz-utf8-unix.aux" 1418772883 4124 505d2aaac8ff2abdf2460f54c2c7cc8e ""
-  "dyplom-inz-utf8-unix.lof" 1418772883 583 50bf9b73bf51ed5ecc0051d011a52b07 ""
-  "dyplom-inz-utf8-unix.tex" 1418772878 37286 6af50a0a48af1071f1afca95101f79f6 ""
-  "dyplom-inz-utf8-unix.toc" 1418772883 1692 51f9a4262de6115eae30d83f57223372 ""
+  "Figures/tlc_2leds.png" 1418847490 80495 13285e33afb4582201717f61149c7245 ""
+  "Figures/tlc_array.png" 1416777897 45871 b770a2124d3d925fc8b8274d91219fd4 ""
+  "dyplom-inz-utf8-unix.aux" 1418854915 4788 6efce83e40c03f07fb4bab604271fa88 ""
+  "dyplom-inz-utf8-unix.lof" 1418854915 1007 7fe6fd729d7a810b773d76afb0bf0d18 ""
+  "dyplom-inz-utf8-unix.tex" 1418854913 40494 9d6e03731968454b8c656ba32f5b6a05 ""
+  "dyplom-inz-utf8-unix.toc" 1418854915 1747 e185ae07d3d410d9b3ad1a2ca26dd541 ""
   "mgr.cls" 1417605445 35095 05d13534e07990ef5bfa77ce9426501f ""
   (generated)
-  "dyplom-inz-utf8-unix.pdf"
   "dyplom-inz-utf8-unix.toc"
+  "dyplom-inz-utf8-unix.pdf"
   "dyplom-inz-utf8-unix.log"
-  "dyplom-inz-utf8-unix.out"
   "dyplom-inz-utf8-unix.aux"
+  "dyplom-inz-utf8-unix.out"
   "dyplom-inz-utf8-unix.lof"

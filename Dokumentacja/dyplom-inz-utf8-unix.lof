@@ -1,8 +1,11 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Schemat komunikacji przez interfejs \emph {SPI}}}{10}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Kolejno\IeC {\'s}\IeC {\'c} danych, odpowiadaj\IeC {\k a}cych dwom diodom, w rejestrze przesuwnym sterownika \emph {Texas Intruments tlc5947}}}{7}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Kolejno\IeC {\'s}\IeC {\'c} danych, odpowiadaj\IeC {\k a}cych dwom diodom, w rejestrze przesuwnym sterownika \emph {Texas Intruments tlc5947}}}{7}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Aplikacja graficzna \emph {LedSimulator}: przyk\IeC {\l }adowe kolory}}{17}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Aplikacja graficzna \emph {LedSimulator}: domy\IeC {\'s}lny stan diod}}{18}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Wyb\IeC {\'o}r trybu dzia\IeC {\l }ania aplikacji \emph {LedSimulator}}}{18}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Schemat komunikacji przez interfejs \emph {SPI}}}{12}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Aplikacja graficzna \emph {LedSimulator}: przyk\IeC {\l }adowe kolory}}{19}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Aplikacja graficzna \emph {LedSimulator}: domy\IeC {\'s}lny stan diod}}{20}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Wyb\IeC {\'o}r trybu dzia\IeC {\l }ania aplikacji \emph {LedSimulator}}}{20}
 \addvspace {10\p@ }

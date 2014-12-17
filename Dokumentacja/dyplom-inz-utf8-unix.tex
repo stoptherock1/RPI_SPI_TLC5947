@@ -95,8 +95,8 @@
 \newcommand{\R}{I\!\!R} %symbol liczb rzeczywistych, działa tylko w trybie matematycznym
 \newtheorem{theorem}{Twierdzenie}[section] %nowe otoczenie do składania twierdzeń
 
-\title{Obsługa RGB}
-\engtitle{RGB panel}
+\title{Obsługa paneli RGB z wykorzystaniem Raspberry~Pi i magistrali SPI lub I²C}
+\engtitle{RGB panels control over SPI or I²C interface and Raspberry~Pi}
 \author{Mikalai Barysau}
 \supervisor{dr inż. Tomasz Surmacz}
 
@@ -118,7 +118,6 @@
 % ************************************************************************************************
 \addcontentsline{toc}{chapter}{\hspace{0.64cm}Wstęp}
 \chapter*{Wstęp}
-Celem danej pracy było stworzenie biblioteki do sterowania panelami RGB za pomocą \emph{Raspberry PI} przez interfejs \emph{SPI} oraz aplikacji graficznej, umożliwiającej kalibrowanie kolorów i wykonanie symulacji działania systemu na zwykłym komputerze bez konieczności podłączenia sprzętu. Analiza rynku i istniejących rozwiązań świadczy o tym, że wybrany temat jest w tej chwili bardzo aktualny. 
 
 Rosnąca liczba urządzeń elektonicznych w segmencie budżetowym, wzrastające możliwości obliczeniowe komputerów i coraz mniejsze rozmiary processorów, płyt głównych, źródeł zasilania i nośników danych umożliwiają stworzenie produktów, które stosunkowo niedawno wymagały znaczących inwestycji finansowych i zazwyczaj były mało mobilne. 
 
@@ -130,6 +129,20 @@ Dlatego rola programisty i inżyniera, który jest twórcą tego produktu, poleg
 
 Stworzenie takiego produktu jest zadaniem nietrywialnym i czasochłonnym. Opracowanie scenariuszy działania tworzonego systemu, przeprowadzenie analizy przypadków użycia, dobór odpowiednich technologii i efektywnych metod obliczeniowych jest niezbędną cześcią procesu tworzenia oprogramowania o wysokiej jakości.
 
+% ************************************************************************************************
+%                                           CHAPTER
+% ************************************************************************************************
+\chapter{Cel pracy}
+
+Celem danej pracy było stworzenie biblioteki do sterowania panelami RGB za pomocą \emph{Raspberry PI} przez interfejs \emph{SPI} oraz aplikacji graficznej, umożliwiającej kalibrowanie kolorów i wykonanie symulacji działania systemu na zwykłym komputerze bez konieczności podłączenia sprzętu. 
+
+Wykorzystany w danej pracy sprzęt wymaga posiadanie pewnej wiedzy technicznej, dotyczącej zasad funkcjonowania pamięci układu \emph{Texas Intruments tlc5947} specyfiki oraz opanowania technik programowania nizkopoziomowego. 
+
+Stworzona bilioteka ma na celu znacznie ułatwić sterowanie podłączonym panelem LED RGB. Uzytkownik biblioteki operuje na obiektach struktury \emph{RGB} i funkcjach, które pozwalają zdefiniować lub pobrać kolor diody o wybranym numerze porządkowym. Dzięki temu nie jest konieczne dokładne zapoznanie się z modelem pamięci sterownika. Dla korzystania z biblioteki potrzebna jest jedynie podstawowa wiedza z programowania w języku \emph{C}. 
+
+Z kolei rozwinięcie biblioteki, lub dostosowanie jej do innego modelu pamięci, będzie wymagało bardziej zaawansowanej wiedzy z dziedziny programowania nizkopoziomowego. Nie powinno to, jednak, być dużym problem, ponieważ jedną z najważniejszych zasad tego projektu było bardzo szczególne dokumentowanie kodu, co pozwala osobie, nie posiadającej niezbędnej wiedzy o układzie \emph{tlc5947}, w stosunkowo krótkim czasie zapoznać się z zasadami operowania na pamięci, definiowania kolorów i wyciągania danych z rejestru presuwnego, wykorzystanego w danym układzie.
+
+
 
 % ************************************************************************************************
 %                                           CHAPTER
@@ -137,6 +150,31 @@ Stworzenie takiego produktu jest zadaniem nietrywialnym i czasochłonnym. Opraco
 \chapter{Opis sprzętu}
 
 \section{Układ \emph{Texas Intruments tlc5947}}
+Przy wykonaniu danej pracy został wykorzystany sterownik \emph{Texas Intruments tlc5947} -- 24 kanałowy sterownik diod LED RGB. Każdy z trzech kolorów odpowiada kolorom czerwonomu, zielonemu oraz niebieskiemu.
+
+W środku sterownika znajduje się 36-bajtowy rejestr przesówny. Każdej z ośmiu diod RGB przysługuje 4.5 bajta pamięci, co oznacza że wartość odpowiadająca każdemu kolorowi może mieć wartość w przedziale od \emph{0} do \emph{4095}. 
+
+Specyfika modelu pamięci, zastosowanego w rejestrze przesuwnym układu \emph{Texas Intruments tlc5947}, polega na tym, że dane są uporządkowane w innej kolejności, niż tego może oczekiwać użytkownik. Schemat modelu pamięci jest predstawiony na rysunku \ref{fig:tlc_array}
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/tlc_array.png} 
+    \caption{Kolejność danych, odpowiadających dwom diodom, w rejestrze przesuwnym sterownika \emph{Texas Intruments tlc5947}}
+    \label{fig:tlc_array}
+\end{figure}
+
+Litery $R_x G_x B_x$ i kolor komurek odpowiadają kolorom oddzielnej diody. Indeksy~$_x$ oznaczają kolejność liczb szestnastkowych, odpowiadających kodom poszczególnych kolorów. Adresy poszczególnych bajtów wypisane są szarą czcionką. 
+
+Następny przykład (rys. \ref{fig:tlc_2leds}) ilustruje kolejność danych dla 2 diod w dziewięciobajtowym bloku pamięci.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/tlc_2leds.png} 
+    \caption{Kolejność danych, odpowiadających dwom diodom, w rejestrze przesuwnym sterownika \emph{Texas Intruments tlc5947}}
+    \label{fig:tlc_2leds}
+\end{figure}
+
+
 
 \section{Mikrokomputer \emph{Raspberry Pi}}
 \emph{Raspberry Pi} -- komputer jednopłytkowy, stworzony przez \emph{Raspberry Pi Foundation}. Mikrokomputer oparty jest na układzie \emph{Broadcom BCM2835 SoC}, który składa się z procesora \emph{ARM1176JZF-S 700 MHz}, \emph{VideoCore IV GPU} i 256 megabajtów (MB) pamięci RAM. Na potrzeby projektu na urządzeniu został zainstalowany system \emph{Raspbian}. 
@@ -165,10 +203,6 @@ Konfiguracja sprzętowa \emph{Raspberry Pi model B}, który został użyty w dan
   \textbf{Waga} & 45 g \\
   \hline  
 \end{tabular}
-
-
-
-
 
 
 
@@ -257,7 +291,7 @@ Po wprowadzeniu zmian należy zrestartować \emph{Raspberry Pi} (np. za pomocą 
 Po ponownym załadowaniu można sprawdzić, czy moduł \emph{SPI} został załadowany. W tym celu można skorzystać z polecenia \emph{lsmod}.
 \vspace{0.5cm}
 
-%\begin{minipage}{\textwidth}
+\begin{minipage}{\textwidth}
   \begin{lstlisting}[language=bash,frame=single,caption={Wynik wykonania polecenia \emph{lsmod}}]
   Module                  Size  Used by
   snd_bcm2835            12808  0
@@ -270,7 +304,7 @@ Po ponownym załadowaniu można sprawdzić, czy moduł \emph{SPI} został załad
   spidev                  5136  0
   spi_bcm2708             4401  0
   \end{lstlisting} 
-%\end{minipage}
+\end{minipage}
 
 \section{Interfejs komunikacyjny \emph{SPI}}
 
