@@ -20,4 +20,3 @@
 \contentsline {subsection}{\numberline {4.1.8}setLedRGB}{19}
 \contentsline {section}{\numberline {4.2}Aplikacja graficzna \emph {LedSimulator}}{19}
 \contentsline {chapter}{\hspace {0.64cm}Spis rysunk\'ow}{20}
-\contentsline {chapter}{\numberline {}Literatura}{23}
