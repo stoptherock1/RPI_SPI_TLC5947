@@ -8,6 +8,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     this->setWindowTitle("LedSimulator");
 
+    mmThread = new MemoryMonitor(&simulationOn, &systemLinux, LED_NUMBER);
+
     diameter = 100;
 
     window = new QWidget();
@@ -82,7 +84,7 @@ MainWindow::MainWindow(QWidget *parent) :
     FILE *pipe;
 
     pipe = popen(bash_cmd, "r");
-    char system[6];
+    char system[10];
 
     if (NULL != pipe)
     {
@@ -90,13 +92,20 @@ MainWindow::MainWindow(QWidget *parent) :
         pclose(pipe);
 
         if(strcmp("Linux", system) == 0)
+        {
             systemLinux = true;
+            qDebug() << "Linux";
+        }
     }
     else
         systemLinux = false;
 
+    connect(mmThread, SIGNAL(updateStatusBarText(QString) ), statusBarText, SLOT(setText(QString)) );
+    connect(mmThread, SIGNAL(memoryDataUpdated(int)) , this, SLOT(setMemoryLoadLedColors(int)) );
+
 
     this->setCentralWidget(window);
+
 
     //move current window to the center of the screen
     this->move( QApplication::desktop()->screen()->rect().center() - window->rect().center());
@@ -114,10 +123,6 @@ void MainWindow::ledColorChanged(QString text)
 
 void MainWindow::setLedColor(uint32_t ledNumber, uint8_t colorCode, uint8_t color255)
 {
-    qDebug() << "ledNumber" << ledNumber;
-    qDebug() << "colorCode" << colorCode;
-    qDebug() << "color255" << color255 << "\n";
-
     if(0==colorCode)
         leds[ledNumber].red = color255;
     else if(1==colorCode)
@@ -161,39 +166,22 @@ MainWindow::~MainWindow()
 
 void MainWindow::runLedScenario()
 {
-    while(simulationOn && systemLinux)
-    {
-        sleep(1);
-
-        char bash_cmd[256] = "cat /proc/meminfo | sed -n '1p;2p'";
-        FILE *pipe;
-
-        pipe = popen(bash_cmd, "r");
-
-        if (NULL == pipe)
-            continue;
-
-        int free = 0;
-        int total = 0;
-        fscanf(pipe, "%*s %d %*s\n%*s %d ", &total, &free);
-        int used = total - free;
-        float load = used / (total / 100);
-        int chunk = total / LED_NUMBER;
-        pclose(pipe);
-
-        setMemoryLoadLedColors(used / chunk);
-        QString statusBarTextStr = QString("Mode: color calibration\t\t[Memory load: %1%]").arg(load);
-        statusBarText->setText(statusBarTextStr);
-    }
+    mmThread->start();
 
     QString statusBarTextStr = QString("Error! This function is available anly on Linux system");
     statusBarText->setText(statusBarTextStr);
-
 }
 
 
 void MainWindow::setMemoryLoadLedColors(int limit)
 {
+    for(int i=0; i<LED_NUMBER; ++i)
+    {
+        setLedColor(i, 0, 0);
+        setLedColor(i, 1, 0);
+        setLedColor(i, 2, 0);
+    }
+
     int chunk = LED_NUMBER / 3;
 
     if(LED_NUMBER%2 == 0)

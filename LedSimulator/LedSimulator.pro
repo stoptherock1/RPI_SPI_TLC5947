@@ -15,11 +15,13 @@ TEMPLATE = app
 SOURCES += main.cpp\
         MainWindow.cpp \
     renderarea.cpp \
-    ledLineEdit.cpp
+    ledLineEdit.cpp \
+    MemoryMonitor.cpp
 
 HEADERS  += MainWindow.h \
     renderarea.h \
-    ledLineEdit.h
+    ledLineEdit.h \
+    MemoryMonitor.h
 
 FORMS    += MainWindow.ui
 QMAKE_MAC_SDK = macosx10.10

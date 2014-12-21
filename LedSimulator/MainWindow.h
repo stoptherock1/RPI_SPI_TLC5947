@@ -15,6 +15,11 @@
 #include "renderarea.h"
 #include "ledLineEdit.h"
 #include "../tlc5947_lib/RGB.h"
+#include "../tlc5947_lib/tlc5947_controller.h"
+#include <unistd.h>
+#include <QProcess>
+#include "MemoryMonitor.h"
+
 
 #define LED_NUMBER 8
 #define LINE_EDITS_NUMBER 3
@@ -38,6 +43,7 @@ private:
     RenderArea *renderArea;
     bool simulationOn;
     bool systemLinux;
+    MemoryMonitor *mmThread;
 
     uint32_t diameter;
     QHBoxLayout *hBoxLayout;
@@ -55,13 +61,14 @@ private:
 
     void setLedColor(uint32_t ledNumber, uint8_t ledColorCode, uint8_t ledColor);
     void runLedScenario();
-    void setMemoryLoadLedColors(int limit);
+
 
 public slots:
     void ledColorChanged(QString text);
 private slots:
     void on_actionColor_calibrator_triggered();
     void on_actionTLC5947_Simulator_triggered();
+    void setMemoryLoadLedColors(int limit);
 };
 
 #endif // MAINWINDOW_H
