@@ -2,6 +2,7 @@
 #define LEDLINEEDIT_H
 
 #include <QLineEdit>
+#include <stdint.h>
 
 class ledLineEdit : public QLineEdit
 {

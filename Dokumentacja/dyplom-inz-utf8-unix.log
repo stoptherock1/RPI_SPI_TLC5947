@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  19 DEC 2014 22:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  21 DEC 2014 16:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -501,14 +501,14 @@ Rozdzia\PlPrIeC {\l } 1.
 
 ]
 Rozdzia\PlPrIeC {\l } 2.
-<Figures/tlc_array.png, id=37, 1498.59875pt x 249.93375pt>
+<Figures/tlc_array.png, id=38, 1498.59875pt x 249.93375pt>
 File: Figures/tlc_array.png Graphic file (type png)
 
 <use Figures/tlc_array.png>
 Package pdftex.def Info: Figures/tlc_array.png used on input line 163.
 (pdftex.def)             Requested size: 455.24408pt x 75.92267pt.
 
-<Figures/tlc_2leds.png, id=39, 642.2394pt x 120.45pt>
+<Figures/tlc_2leds.png, id=40, 642.2394pt x 120.45pt>
 File: Figures/tlc_2leds.png Graphic file (type png)
 
 <use Figures/tlc_2leds.png>
@@ -561,7 +561,7 @@ File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 316.
 
-<Figures/spi3.png, id=63, 1673.25125pt x 982.67125pt>
+<Figures/spi3.png, id=64, 1673.25125pt x 982.67125pt>
 File: Figures/spi3.png Graphic file (type png)
  <use Figures/spi3.png>
 Package pdftex.def Info: Figures/spi3.png used on input line 327.
@@ -634,11 +634,23 @@ ulator4.png> <./Figures/ledSimulator3.png>]
 [22
 
 
+]
+Rozdzia\PlPrIeC {\l } 5.
+
+Overfull \hbox (56.4557pt too wide) in paragraph at lines 849--849
+[]    $\T1/pcr/m/n/12 http : / / download . qt-[]project . org / official _ rel
+eases / online _ installers /
+ []
+
+[23] [24
+
+
 ] (./dyplom-inz-utf8-unix.lof)
 \tf@lof=\write5
 \openout5 = `dyplom-inz-utf8-unix.lof'.
 
- (./dyplom-inz-utf8-unix.bbl [23] [24
+ (./dyplom-inz-utf8-unix.bbl [25]
+[26
 
 
 ]
@@ -665,13 +677,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 37--41
 i (da-ta do-st¦-pu:
  []
 
-) [25] (./dyplom-inz-utf8-unix.aux) ) 
+) [27] (./dyplom-inz-utf8-unix.aux) ) 
 Here is how much of TeX's memory you used:
- 6972 strings out of 493117
- 92251 string characters out of 6135433
+ 6974 strings out of 493117
+ 92277 string characters out of 6135433
  267837 words of memory out of 5000000
- 10238 multiletter control sequences out of 15000+600000
- 30717 words of font info for 73 fonts, out of 8000000 for 9000
+ 10239 multiletter control sequences out of 15000+600000
+ 31418 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,15n,58p,894b,1243s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2014/texmf-dist/fonts/
@@ -685,25 +697,26 @@ ist/fonts/type1/public/pl/plsy10.pfb></usr/local/texlive/2014/texmf-dist/fonts/
 type1/public/cm-super/sfbi1095.pfb></usr/local/texlive/2014/texmf-dist/fonts/ty
 pe1/public/cm-super/sfbi1200.pfb></usr/local/texlive/2014/texmf-dist/fonts/type
 1/public/cm-super/sfbi1728.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/
-public/cm-super/sfbx1095.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/pu
-blic/cm-super/sfbx1200.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/publ
-ic/cm-super/sfbx1440.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public
-/cm-super/sfbx1728.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/c
-m-super/sfbx2074.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/cm-
-super/sfbx2488.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/cm-su
-per/sfcc1728.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/cm-supe
-r/sfrm0600.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/cm-super/
-sfrm0800.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/cm-super/sf
-rm1000.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/cm-super/sfrm
-1200.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/cm-super/sfrm14
-40.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/cm-super/sfrm2074
-.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/cm-super/sfti1200.p
-fb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr
-/local/texlive/2014/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on dyplom-inz-utf8-unix.pdf (27 pages, 636556 bytes).
+public/cm-super/sfbi2488.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/pu
+blic/cm-super/sfbx1095.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/publ
+ic/cm-super/sfbx1200.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public
+/cm-super/sfbx1440.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/c
+m-super/sfbx1728.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/cm-
+super/sfbx2074.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/cm-su
+per/sfbx2488.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/cm-supe
+r/sfcc1728.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/cm-super/
+sfrm0600.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/cm-super/sf
+rm0800.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/cm-super/sfrm
+1000.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/cm-super/sfrm12
+00.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/cm-super/sfrm1440
+.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/cm-super/sfrm2074.p
+fb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb
+></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/l
+ocal/texlive/2014/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb>
+Output written on dyplom-inz-utf8-unix.pdf (29 pages, 659763 bytes).
 PDF statistics:
- 205 PDF objects out of 1000 (max. 8388607)
- 135 compressed objects within 2 object streams
+ 215 PDF objects out of 1000 (max. 8388607)
+ 142 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  41 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,13 +1,13 @@
 # Fdb version 3
-["bibtex dyplom-inz-utf8-unix"] 1419023834 "dyplom-inz-utf8-unix.aux" "dyplom-inz-utf8-unix.bbl" "dyplom-inz-utf8-unix" 1419023838
+["bibtex dyplom-inz-utf8-unix"] 1419174363 "dyplom-inz-utf8-unix.aux" "dyplom-inz-utf8-unix.bbl" "dyplom-inz-utf8-unix" 1419174369
   "/usr/local/texlive/2014/texmf-dist/bibtex/bst/gustlib/plabbrv.bst" 1136766823 19788 50e09ba3e2c61d25e7adfc051586b447 ""
-  "dyplom-inz-utf8-unix.aux" 1419023836 5349 06882414cb6fc50e2bc34e3c38724145 ""
+  "dyplom-inz-utf8-unix.aux" 1419174368 5560 4f26ed90f1cdc1d6df415df1219331e5 ""
   "dyplom-inz-utf8-unix.bcf" 0 -1 0 ""
   "inz.bib" 1419023831 1548 ea36b7bf5d1a49379650afa2fb157d74 ""
   (generated)
-  "dyplom-inz-utf8-unix.blg"
   "dyplom-inz-utf8-unix.bbl"
-["pdflatex"] 1419023835 "dyplom-inz-utf8-unix.tex" "dyplom-inz-utf8-unix.pdf" "dyplom-inz-utf8-unix" 1419023838
+  "dyplom-inz-utf8-unix.blg"
+["pdflatex"] 1419174364 "dyplom-inz-utf8-unix.tex" "dyplom-inz-utf8-unix.pdf" "dyplom-inz-utf8-unix" 1419174369
   "/usr/local/texlive/2014/texmf-dist/tex/context/base/supp-pdf.mkii" 1337017135 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/etexcmds.sty" 1335995445 7612 c47308d923ec19888707b0f1792b326a ""
   "/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/ifluatex.sty" 1303254447 7324 11d14f318d865f420e692d4e6c9c18c3 ""
@@ -81,15 +81,15 @@
   "Figures/spi3.png" 1417605445 84506 ab5259d7a4dfb91b93df54115765abd8 ""
   "Figures/tlc_2leds.png" 1418847490 80495 13285e33afb4582201717f61149c7245 ""
   "Figures/tlc_array.png" 1416777897 45871 b770a2124d3d925fc8b8274d91219fd4 ""
-  "dyplom-inz-utf8-unix.aux" 1419023836 5349 06882414cb6fc50e2bc34e3c38724145 ""
-  "dyplom-inz-utf8-unix.bbl" 1419023835 1430 d805f2d1f82a504d4de17ba8be82fe0a "bibtex dyplom-inz-utf8-unix"
-  "dyplom-inz-utf8-unix.lof" 1419023836 1321 abe954aa60aad7de6922e4615df542ba ""
-  "dyplom-inz-utf8-unix.tex" 1419022462 39791 c45bbfebadd20fef57437ceda1dfa97f ""
-  "dyplom-inz-utf8-unix.toc" 1419023836 1693 0255fee02dd72bf082c89239d0eb7c93 ""
+  "dyplom-inz-utf8-unix.aux" 1419174368 5560 4f26ed90f1cdc1d6df415df1219331e5 ""
+  "dyplom-inz-utf8-unix.bbl" 1419174364 1430 d805f2d1f82a504d4de17ba8be82fe0a "bibtex dyplom-inz-utf8-unix"
+  "dyplom-inz-utf8-unix.lof" 1419174368 1341 8a0960139b78dcc5bbcac0746a1d3650 ""
+  "dyplom-inz-utf8-unix.tex" 1419174355 40732 cdb6266bd51fd63b060fb1c57d02d379 ""
+  "dyplom-inz-utf8-unix.toc" 1419174368 1809 6b9dc0a06520c1905fb9c6f5932c1599 ""
   "mgr.cls" 1417605445 35095 05d13534e07990ef5bfa77ce9426501f ""
   (generated)
-  "dyplom-inz-utf8-unix.log"
-  "dyplom-inz-utf8-unix.aux"
   "dyplom-inz-utf8-unix.toc"
-  "dyplom-inz-utf8-unix.lof"
   "dyplom-inz-utf8-unix.pdf"
+  "dyplom-inz-utf8-unix.log"
+  "dyplom-inz-utf8-unix.lof"
+  "dyplom-inz-utf8-unix.aux"

@@ -17,6 +17,7 @@
 \contentsline {subsection}{\numberline {4.1.5}insertLedRgb}{16}
 \contentsline {subsection}{\numberline {4.1.6}getLedRGB}{17}
 \contentsline {subsection}{\numberline {4.1.7}setLedRGB}{18}
-\contentsline {subsection}{\numberline {4.1.8}setLedRGB}{19}
+\contentsline {subsection}{\numberline {4.1.8}printLedDataArray}{19}
 \contentsline {section}{\numberline {4.2}Aplikacja graficzna \emph {LedSimulator}}{19}
-\contentsline {chapter}{\hspace {0.64cm}Spis rysunk\'ow}{20}
+\contentsline {chapter}{\numberline {5}Uruchomienie aplikacji w \IeC {\'s}rodowisku \emph {Qt creator}}{23}
+\contentsline {chapter}{\hspace {0.64cm}Spis rysunk\'ow}{23}
