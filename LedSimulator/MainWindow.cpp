@@ -75,6 +75,26 @@ MainWindow::MainWindow(QWidget *parent) :
         hBoxLayout->addLayout( vBoxLayouts[i] );
     }
 
+    simulationOn = false;
+
+
+    char bash_cmd[256] = "uname";
+    FILE *pipe;
+
+    pipe = popen(bash_cmd, "r");
+    char system[6];
+
+    if (NULL != pipe)
+    {
+        fscanf(pipe, "%s", &system);
+        pclose(pipe);
+
+        if(strcmp("Linux", system) == 0)
+            systemLinux = true;
+    }
+    else
+        systemLinux = false;
+
 
     this->setCentralWidget(window);
 
@@ -138,19 +158,93 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+
 void MainWindow::runLedScenario()
 {
+    while(simulationOn && systemLinux)
+    {
+        sleep(1);
 
+        char bash_cmd[256] = "cat /proc/meminfo | sed -n '1p;2p'";
+        FILE *pipe;
+
+        pipe = popen(bash_cmd, "r");
+
+        if (NULL == pipe)
+            continue;
+
+        int free = 0;
+        int total = 0;
+        fscanf(pipe, "%*s %d %*s\n%*s %d ", &total, &free);
+        int used = total - free;
+        float load = used / (total / 100);
+        int chunk = total / LED_NUMBER;
+        pclose(pipe);
+
+        setMemoryLoadLedColors(used / chunk);
+        QString statusBarTextStr = QString("Mode: color calibration\t\t[Memory load: %1%]").arg(load);
+        statusBarText->setText(statusBarTextStr);
+    }
+
+    QString statusBarTextStr = QString("Error! This function is available anly on Linux system");
+    statusBarText->setText(statusBarTextStr);
+
+}
+
+
+void MainWindow::setMemoryLoadLedColors(int limit)
+{
+    int chunk = LED_NUMBER / 3;
+
+    if(LED_NUMBER%2 == 0)
+        ++chunk;
+
+    if(limit==0)
+        ++limit;
+
+    for(int i=0; i<chunk && i<limit; ++i)
+    {
+        setLedColor(i, 0, 140);
+        setLedColor(i, 1, 255);
+        setLedColor(i, 2, 70);
+    }
+
+    for(int i=chunk; i<chunk*2 && i<limit; ++i)
+    {
+        setLedColor(i, 0, 255);
+        setLedColor(i, 1, 255);
+        setLedColor(i, 2, 70);
+    }
+
+    for(int i=chunk*2; i<LED_NUMBER && i<limit; ++i)
+    {
+        setLedColor(i, 0, 255);
+        setLedColor(i, 1, 50);
+        setLedColor(i, 2, 50);
+    }
 }
 
 void MainWindow::on_actionColor_calibrator_triggered()
 {
-    for(int i=0; i<LED_NUMBER*LINE_EDITS_NUMBER; ++i)
+    if(simulationOn)
     {
-        lineEdits[i]->setReadOnly(false);
-        lineEdits[i]->clear();
+        for(int i=0; i<LED_NUMBER*LINE_EDITS_NUMBER; ++i)
+        {
+            lineEdits[i]->setReadOnly(false);
+            lineEdits[i]->clear();
+        }
+
+        for(int i=0; i<LED_NUMBER; ++i)
+        {
+            setLedColor(i, 0, 0);
+            setLedColor(i, 1, 0);
+            setLedColor(i, 2, 0);
+        }
+
+        simulationOn = false;
+
+        statusBarText->setText("Mode: color calibration");
     }
-    statusBarText->setText("Mode: color calibration");
 }
 
 void MainWindow::on_actionTLC5947_Simulator_triggered()
@@ -160,5 +254,9 @@ void MainWindow::on_actionTLC5947_Simulator_triggered()
         lineEdits[i]->setReadOnly(true);
         lineEdits[i]->clear();
     }
+
+    simulationOn = true;
+
     statusBarText->setText("Mode: tlc5947 simulation");
+    runLedScenario();
 }

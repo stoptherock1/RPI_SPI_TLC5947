@@ -36,6 +36,8 @@ public:
 private:
     Ui::MainWindow *ui;
     RenderArea *renderArea;
+    bool simulationOn;
+    bool systemLinux;
 
     uint32_t diameter;
     QHBoxLayout *hBoxLayout;
@@ -53,6 +55,7 @@ private:
 
     void setLedColor(uint32_t ledNumber, uint8_t ledColorCode, uint8_t ledColor);
     void runLedScenario();
+    void setMemoryLoadLedColors(int limit);
 
 public slots:
     void ledColorChanged(QString text);
