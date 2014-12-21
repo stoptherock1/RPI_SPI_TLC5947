@@ -21,7 +21,7 @@
 #include "MemoryMonitor.h"
 
 
-#define LED_NUMBER 8
+#define LED_NUMBER 8        //only even numbers are allowed
 #define LINE_EDITS_NUMBER 3
 
 
@@ -39,6 +39,7 @@ public:
     ~MainWindow();
 
 private:
+    uint8_t txdata[LED_NUMBER/2*9];
     Ui::MainWindow *ui;
     RenderArea *renderArea;
     bool simulationOn;

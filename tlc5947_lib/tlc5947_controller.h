@@ -31,8 +31,16 @@ README	README	README	README	README	README	README	README README	README	README	REA
 README	README	README	README	README	README	README	README README	README	README	README	README
 /---------------------------------------------------------------------------------------------------*/
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 int setLedRGB(uint32_t ledNumber, RGB rgbSet, uint8_t* tab);
 RGB getLedRGB(uint8_t ledNumber, uint8_t* tab);
 void printLedDataArray(uint8_t* tab);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /*TLC5947_CONTROLLER_H*/

@@ -16,12 +16,15 @@ SOURCES += main.cpp\
         MainWindow.cpp \
     renderarea.cpp \
     ledLineEdit.cpp \
-    MemoryMonitor.cpp
+    MemoryMonitor.cpp \
+    ../tlc5947_lib/tlc5947_controller.c
 
 HEADERS  += MainWindow.h \
     renderarea.h \
     ledLineEdit.h \
-    MemoryMonitor.h
+    MemoryMonitor.h \
+    ../tlc5947_lib/RGB.h \
+    ../tlc5947_lib/tlc5947_controller.h
 
 FORMS    += MainWindow.ui
 QMAKE_MAC_SDK = macosx10.10

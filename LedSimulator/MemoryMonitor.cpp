@@ -47,7 +47,7 @@ void MemoryMonitor::run()
 //        qDebug() << "Free:" << free;
 //        qDebug() << "Load:" << load;
 
-        QString statusBarTextStr = QString("Mode: color calibration\t\t[Memory load: %1%]").arg(load);
+        QString statusBarTextStr = QString("Mode: tlc5947 simulation\t\t[Memory load: %1%]").arg(load);
 
         emit memoryDataUpdated(used/chunk);
         emit updateStatusBarText(statusBarTextStr);

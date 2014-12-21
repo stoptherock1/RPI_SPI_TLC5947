@@ -2,7 +2,7 @@
 \contentsline {chapter}{\numberline {1}Cel pracy}{5}
 \contentsline {chapter}{\numberline {2}Opis sprz\IeC {\k e}tu}{7}
 \contentsline {section}{\numberline {2.1}Uk\IeC {\l }ad \emph {Texas Intruments tlc5947}}{7}
-\contentsline {section}{\numberline {2.2}Mikrokomputer \emph {Raspberry Pi}}{8}
+\contentsline {section}{\numberline {2.2}Mikrokomputer \emph {Raspberry Pi}}{7}
 \contentsline {chapter}{\numberline {3}Opis wybranych technologii}{9}
 \contentsline {section}{\numberline {3.1}Biblioteka do obs\IeC {\l }ugi uk\IeC {\l }adu \emph {Texas Intruments tlc5947}}{9}
 \contentsline {section}{\numberline {3.2}Aplikacja graficzna \emph {LedSimulator} do symulacji dzia\IeC {\l }ania systemu}{9}
@@ -19,5 +19,8 @@
 \contentsline {subsection}{\numberline {4.1.7}setLedRGB}{18}
 \contentsline {subsection}{\numberline {4.1.8}printLedDataArray}{19}
 \contentsline {section}{\numberline {4.2}Aplikacja graficzna \emph {LedSimulator}}{19}
-\contentsline {chapter}{\numberline {5}Uruchomienie aplikacji w \IeC {\'s}rodowisku \emph {Qt creator}}{23}
-\contentsline {chapter}{\hspace {0.64cm}Spis rysunk\'ow}{23}
+\contentsline {chapter}{\numberline {5}Przyk\IeC {\l }ady uruchomienia projektu}{23}
+\contentsline {section}{\numberline {5.1}Zastosowanie biblioteki \emph {tlc5947\_controller} do sterowania uk\IeC {\l }ad 8 diod za pomoc\IeC {\k a}\IeC {\nobreakspace }\emph {Raspberry Pi}}{23}
+\contentsline {section}{\numberline {5.2}Uruchomienie aplikacji w \IeC {\'s}rodowisku \emph {Qt creator}}{27}
+\contentsline {chapter}{\hspace {0.64cm}Podsumowanie}{27}
+\contentsline {chapter}{\hspace {0.64cm}Spis rysunk\'ow}{29}

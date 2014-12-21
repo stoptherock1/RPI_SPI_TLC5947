@@ -95,13 +95,13 @@
 \newcommand{\R}{I\!\!R} %symbol liczb rzeczywistych, działa tylko w trybie matematycznym
 \newtheorem{theorem}{Twierdzenie}[section] %nowe otoczenie do składania twierdzeń
 
-\title{Obsługa paneli RGB z wykorzystaniem Raspberry~Pi i magistrali SPI lub I²C}
-\engtitle{RGB panels control over SPI or I²C interface and Raspberry~Pi}
+\title{Obsługa paneli RGB z wykorzystaniem Raspberry Pi i magistrali SPI lub I²C}
+\engtitle{RGB panels control over SPI or I²C interface and Raspberry Pi}
 \author{Mikalai Barysau}
 \supervisor{dr inż. Tomasz Surmacz}
 
 \field{Informatyka}
-\specialisation{(INS)}
+\specialisation{Inżynieria systemów informatycznych (INS)}
 
 
 % \DeclareUnicodeCharacter{00A0}{ }
@@ -121,13 +121,13 @@
 \addcontentsline{toc}{chapter}{\hspace{0.64cm}Wstęp}
 \chapter*{Wstęp}
 
-Rosnąca liczba urządzeń elektonicznych w segmencie budżetowym, wzrastające możliwości obliczeniowe komputerów i coraz mniejsze rozmiary processorów, płyt głównych, źródeł zasilania i nośników danych umożliwiają stworzenie produktów, które stosunkowo niedawno wymagały znaczących inwestycji finansowych i zazwyczaj były mało mobilne. 
+Rosnąca liczba urządzeń elektronicznych w segmencie budżetowym, wzrastające możliwości obliczeniowe komputerów i coraz mniejsze rozmiary procesorów, płyt głównych, źródeł zasilania i nośników danych umożliwiają stworzenie produktów, które stosunkowo niedawno wymagały znaczących inwestycji finansowych i zazwyczaj były mało mobilne. 
 
-Obecny świat elektroniczny sprzyja powstaniu licznych ``inteligentnych'' systemów i oddzielnych urządzeń. Niektóre z tych urządzeń już teraz stały się elementami naszego codziennego otoczenia, życia bez których nie możemy sobie wyobrazić. Spad kosztów, wzrost mocy jednostek obliczeniowych i gwałtowne zwiększenie rynku urządzeń elektronicznych powoduje coraz większe zapotrzebowanie społeczności w nowych rozwiązaniach sprzętowych i programowych. 
+Obecny świat elektroniczny sprzyja powstaniu licznych ``inteligentnych'' systemów i oddzielnych urządzeń. Niektóre z tych urządzeń już teraz stały elementami naszego codziennego otoczenia, życia bez których nie możemy sobie wyobrazić. Spad kosztów, wzrost mocy jednostek obliczeniowych i gwałtowne zwiększenie rynku urządzeń elektronicznych powoduje coraz większe zapotrzebowanie społeczności na nowe rozwiązania sprzętowe i programowe. 
 
-Warto również zwrócić uwagę na to, że swiąt systemów operacyjnych również bardzo się rozwinął w ciągu ostatnich 20 lat. Jakiś czas temu najbardziej rozpowszechnionym system operacyjnym był system \emph{Microsoft Windows}. Jednak po upływie czasu systemy, oparte na UNIX-ie, takie jak \emph{GNU/Linux} i \emph{OSX}, również zdobyły dużą popularność spośród użytkowników PC, co w tej chwili wymaga od twórców oprogramowania wyboru technologii, które pozwolą na stworzenie narzędzi, które nie będą wymagały od użytkownika zainstalowania dodatkowych biliotek, konifgurowania odpowiedniego środowiska czy jakiejkolwiek ingerecji w process funkcjonowania dostarczonego produktu. Dla użytkownika końcowego najważnieszym jest to, żeby produkt działał w taki sposób, jak od niego się oczekuje. 
+Warto również zwrócić uwagę na to, że świat systemów operacyjnych również bardzo się rozwinął w ciągu ostatnich 20 lat. Jakiś czas temu najbardziej rozpowszechnionym system operacyjnym był system \emph{Microsoft Windows}. Jednak po upływie czasu systemy, oparte na UNIX-ie, takie jak \emph{GNU/Linux} i \emph{OSX}, również zdobyły dużą popularność spośród użytkowników PC, co w tej chwili wymaga od twórców oprogramowania wyboru technologii, które pozwolą na stworzenie narzędzi, nie wymagających od użytkownika zainstalowania dodatkowych bibliotek, konfigurowania odpowiedniego środowiska czy jakiejkolwiek ingerencji w proces funkcjonowania dostarczonego produktu. Dla użytkownika końcowego najważniejszym jest to, żeby produkt działał w sposób, od niego oczekiwany. 
 
-Dlatego rola programisty i inżyniera, który jest twórcą tego produktu, polega nie tylko na rozwiązaniu konkretnego problemu technicznego, ale również na przemyśleniu tego, czy dany produkt jest intuicyjny w obsłudze, o ile to jest możliwe, czy on jest sprawny i przetestowany, czy użytkownik końcowy nie będzie w stanie zakłócić działanie programu przez nieodpowiednie korzystanie z dostępnych funkcjonalności.
+Dlatego rola programisty i inżyniera, który jest twórcą tego produktu, polega nie tylko na rozwiązaniu konkretnego problemu technicznego, ale również na przemyśleniu tego, czy dany produkt jest intuicyjny w obsłudze, o ile to jest możliwe, czy jest on sprawny i przetestowany, czy użytkownik końcowy nie będzie w stanie zakłócić działanie programu przez nieodpowiednie korzystanie z dostępnych funkcjonalności.
 
 Stworzenie takiego produktu jest zadaniem nietrywialnym i czasochłonnym. Opracowanie scenariuszy działania tworzonego systemu, przeprowadzenie analizy przypadków użycia, dobór odpowiednich technologii i efektywnych metod obliczeniowych jest niezbędną cześcią procesu tworzenia oprogramowania o wysokiej jakości.
 
@@ -136,13 +136,13 @@ Stworzenie takiego produktu jest zadaniem nietrywialnym i czasochłonnym. Opraco
 % ************************************************************************************************
 \chapter{Cel pracy}
 
-Celem danej pracy było stworzenie biblioteki do sterowania panelami RGB za pomocą \emph{Raspberry PI} przez interfejs \emph{SPI} oraz aplikacji graficznej, umożliwiającej kalibrowanie kolorów i wykonanie symulacji działania systemu na zwykłym komputerze bez konieczności podłączenia sprzętu. 
+Celem danej pracy było stworzenie biblioteki do sterowania panelami RGB za pomocą \emph{Raspberry Pi} przez interfejs \emph{SPI} oraz aplikacji graficznej, umożliwiającej kalibrowanie kolorów i wykonanie symulacji działania systemu na zwykłym komputerze bez konieczności podłączenia sprzętu. 
 
-Wykorzystany w danej pracy sprzęt wymaga posiadanie pewnej wiedzy technicznej, dotyczącej zasad funkcjonowania pamięci układu \emph{Texas Intruments tlc5947} specyfiki oraz opanowania technik programowania nizkopoziomowego. 
+Wykorzystany w danej pracy sprzęt wymaga posiadanie pewnej wiedzy technicznej, dotyczącej zasad funkcjonowania pamięci układu \emph{Texas Intruments tlc5947} specyfiki oraz opanowania technik programowania niskopoziomowego. 
 
-Stworzona bilioteka ma na celu znacznie ułatwić sterowanie podłączonym panelem LED RGB. Uzytkownik biblioteki operuje na obiektach struktury \emph{RGB} i funkcjach, które pozwalają zdefiniować lub pobrać kolor diody o wybranym numerze porządkowym. Dzięki temu nie jest konieczne dokładne zapoznanie się z modelem pamięci sterownika. Dla korzystania z biblioteki potrzebna jest jedynie podstawowa wiedza z programowania w języku \emph{C}. 
+Stworzona biblioteka ma na celu znacznie ułatwić sterowanie podłączonym panelem LED RGB. Użytkownik biblioteki operuje na obiektach struktury \emph{RGB} i funkcjach, które pozwalają zdefiniować lub pobrać kolor diody o wybranym numerze porządkowym. Dzięki temu nie jest konieczne dokładne zapoznanie się z modelem pamięci sterownika. Dla korzystania z biblioteki potrzebna jest jedynie podstawowa wiedza z programowania w języku \emph{C}. 
 
-Z kolei rozwinięcie biblioteki, lub dostosowanie jej do innego modelu pamięci, będzie wymagało bardziej zaawansowanej wiedzy z dziedziny programowania nizkopoziomowego. Nie powinno to, jednak, być dużym problem, ponieważ jedną z najważniejszych zasad tego projektu było bardzo szczególne dokumentowanie kodu, co pozwala osobie, nie posiadającej niezbędnej wiedzy o układzie \emph{tlc5947}, w stosunkowo krótkim czasie zapoznać się z zasadami operowania na pamięci, definiowania kolorów i wyciągania danych z rejestru presuwnego, wykorzystanego w danym układzie.
+Z kolei rozwinięcie biblioteki, lub dostosowanie jej do innego modelu pamięci, będzie wymagało bardziej zaawansowanej wiedzy z dziedziny programowania niskopoziomowego. Nie powinno to, jednak, być dużym problem, ponieważ jedną z najważniejszych zasad tego projektu było bardzo szczególne dokumentowanie kodu, co pozwala osobie, nie posiadającej niezbędnej wiedzy o układzie \emph{tlc5947}, w stosunkowo krótkim czasie zapoznać się z zasadami operowania na pamięci, definiowania kolorów i wyciągania danych z rejestru przesuwnego, wykorzystanego w danym układzie.
 
 
 
@@ -152,27 +152,27 @@ Z kolei rozwinięcie biblioteki, lub dostosowanie jej do innego modelu pamięci,
 \chapter{Opis sprzętu}
 
 \section{Układ \emph{Texas Intruments tlc5947}}
-Przy wykonaniu danej pracy został wykorzystany sterownik \emph{Texas Intruments tlc5947} -- 24 kanałowy sterownik diod LED RGB\cite{tlcDoc}. Każdy z trzech kolorów odpowiada kolorom czerwonomu, zielonemu oraz niebieskiemu.
+Przy wykonaniu danej pracy został wykorzystany sterownik \emph{Texas Intruments tlc5947} -- 24 kanałowy sterownik diod LED RGB\cite{tlcDoc}. Każda z trzech barw odpowiada kolorowi czerwonemu, zielonemu oraz niebieskiemu.
 
 W środku sterownika znajduje się 36-bajtowy rejestr przesuwny. Każdej z ośmiu diod RGB przysługuje 4.5 bajta pamięci, co oznacza że wartość odpowiadająca każdemu kolorowi może mieć wartość w przedziale od \emph{0} do \emph{4095}\cite{tlcDoc}. 
 
-Specyfika modelu pamięci, zastosowanego w rejestrze przesuwnym układu \emph{Texas Intruments tlc5947}, polega na tym, że dane są uporządkowane w innej kolejności, niż tego może oczekiwać użytkownik. Schemat modelu pamięci jest predstawiony na rysunku \ref{fig:tlc_array}
+Dodatkowym utrudnieniem dla użytkownika stanowi zastosowanie w rejestrze przesuwnym układu \emph{Texas Intruments tlc5947} modelu pamięci, polegającym na uporządkowaniu danych w innej kolejności, niż tego może oczekiwać użytkownik. Schemat modelu pamięci jest przedstawiony na rysunku \ref{fig:tlc_array}
 
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=\textwidth]{Figures/tlc_array.png} 
-    \caption{Kolejność danych, odpowiadających dwom diodom, w rejestrze przesuwnym sterownika \emph{Texas Intruments tlc5947}}
+    \caption{Kolejność danych, odpowiadająca dwóm diodom, w rejestrze przesuwnym sterownika \emph{Texas Intruments tlc5947}}
     \label{fig:tlc_array}
 \end{figure}
 
-Litery $R_x G_x B_x$ i kolor komurek odpowiadają kolorom oddzielnej diody. Indeksy~$_x$ oznaczają kolejność liczb szestnastkowych, odpowiadających kodom poszczególnych kolorów. Adresy poszczególnych bajtów wypisane są szarą czcionką. 
+Litery $R_x G_x B_x$ i kolor komórek odpowiadają barwom oddzielnej diody. Indeksy $_x$ oznaczają kolejność liczb szesnastkowych, odpowiadających kodom poszczególnych kolorów. Adresy poszczególnych bajtów wypisane są szarą czcionką. 
 
 Następny przykład (rys. \ref{fig:tlc_2leds}) ilustruje kolejność danych dla 2 diod w dziewięciobajtowym bloku pamięci.
 
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=\textwidth]{Figures/tlc_2leds.png} 
-    \caption{Kolejność danych, odpowiadających dwom diodom, w rejestrze przesuwnym sterownika \emph{Texas Intruments tlc5947}}
+    \caption{Kolejność danych, odpowiadających dwóm diodom, w rejestrze przesuwnym sterownika \emph{Texas Intruments tlc5947}}
     \label{fig:tlc_2leds}
 \end{figure}
 
@@ -181,7 +181,7 @@ Następny przykład (rys. \ref{fig:tlc_2leds}) ilustruje kolejność danych dla 
 \section{Mikrokomputer \emph{Raspberry Pi}}
 \emph{Raspberry Pi} -- komputer jednopłytkowy, stworzony przez \emph{Raspberry Pi Foundation}. Mikrokomputer oparty jest na układzie \emph{Broadcom BCM2835 SoC}, który składa się z procesora \emph{ARM1176JZF-S 700 MHz}, \emph{VideoCore IV GPU} i 256 megabajtów (MB) pamięci RAM. Na potrzeby projektu na urządzeniu został zainstalowany system \emph{Raspbian}. 
 
-Konfiguacja programowa mikrokomputera została omówiona w rozdziale \ref{chap:technologies}.
+Konfiguracja programowa mikrokomputera została omówiona w rozdziale \ref{chap:technologies}.
 
 Konfiguracja sprzętowa \emph{Raspberry Pi model B}, który został użyty w danym projekcie, wygląda następująco:
 
@@ -217,31 +217,31 @@ Konfiguracja sprzętowa \emph{Raspberry Pi model B}, który został użyty w dan
 \chapter{Opis wybranych technologii}
 \label{chap:technologies}
 
-Wybór języka, który będzie głównym narzedziem do realizacji projektu, należy dokonywać biorąc pod uwagę specyfikę projektu, zasoby sprzętowe, przypadki użycia produktu, który powinien powstać, wymagania wydajnościowe oraz funkcjonalne. Niemniej ważny jest czas, którym dysponuje programista. 
+Wybór języka, który będzie głównym narzędziem do realizacji projektu, należy dokonywać biorąc pod uwagę specyfikę projektu, zasoby sprzętowe, przypadki użycia produktu, który powinien powstać, wymagania wydajnościowe oraz funkcjonalne. Niemniej ważny jest czas, którym dysponuje programista. 
 
 Dany projekt jest rozwiązaniem zarówno sprzętowym, jak i programowym. Dlatego wybrane technologie muszą spełniać zestaw określonych wymagań, oraz gwarantować możliwość dalszego utrzymania i rozwoju produktu.
 
 Po przeanalizowaniu najbardziej popularnych obecnie technologii, zostały wybrane języki \emph{C} i \emph{C++} z wykorzystaniem zestawu bibliotek \emph{Qt framework}.
 
 \section{Biblioteka do obsługi układu \emph{Texas Intruments tlc5947}}
-Jężyk \emph{C} jest sprawdzonym narzędziem, które pozwala na bardzo szczegółowe manipulacje na pamięci oraz bezpośrednią kontrolę nad złożonością i wydajnością implementowanych funkcji i algorytmów. Język \emph{C++}, z kolei, oprócz wsparcia nizkopoziomowych operacji również pozwala na implementację interfejsów obiektówych i graficznej powłoki do sterowania programem oraz reprezentacji wyników działania i komunikacji z użytkownikiem.
+Język \emph{C} jest sprawdzonym narzędziem, które pozwala na bardzo szczegółowe manipulacje pamięcią oraz bezpośrednią kontrolę nad złożonością i wydajnością implementowanych funkcji i algorytmów. Język \emph{C++}, z kolei, oprócz wsparcia niskopoziomowych operacji również pozwala na implementację interfejsów obiektowych i graficznej powłoki do sterowania programem oraz reprezentacji wyników działania i komunikacji z użytkownikiem.
 
 
 \section{Aplikacja graficzna \emph{LedSimulator} do symulacji działania systemu}
 Zaletą języków \emph{C/C++} jest duża wydajność i szybkość wykonywania skompilowanego kodu (pod warunkiem poprawnego posługiwania się możliwościami tych języków, systemu operacyjnego, rejestrami procesora, pamięcią operacyjną i innymi zasobami sprzętowymi). Od momentu stworzenia języków \emph{C} i \emph{C++} została opracowana liczna grupa bibliotek, dających prawie nieograniczone możliwości do tworzenia oprogramowania. Swobodny dostęp do dokumentacji, tutoriali, projektów z otwartym kodem źródłowym i ogromna społeczność programistów \emph{C/C++} jest gwarancją tego, że napotkane problemy techniczne ne zablokują rozwoju produktu i nie pozostawią programistę sam na sam z ich rozwiązaniem.
 
-Jako narzędzie do tworzenia interfejsu graficznego został wybrany \emph{Qt framework}, gdzyż pozwala on w bardzo wygodny sposób tworzyć interfejsy graficzne użytkonika. Oprócz tego \emph{Qt framework} posiada wyjątkowo dobrą dokumentację, która jest wbudowana w IDE \emph{Qt Creator} i również jest dostępna na stronie internetowej projektu \emph{Qt:} 
+Jako narzędzie do tworzenia GUI został wybrany \emph{Qt framework}, gdyż pozwala on w bardzo wygodny sposób tworzyć interfejsy graficzne użytkownika. Oprócz tego \emph{Qt framework} posiada wyjątkowo dobrą dokumentację, która jest wbudowana w IDE \emph{Qt Creator} i również jest dostępna na stronie internetowej projektu \emph{Qt:} 
 
 \begin{alltt}
     \url{http://qt-project.org/doc/}
 \end{alltt}
 
-W dokumentacji do framework'u można znaleźć szczegółowe opisy funkcji bibliotecznych i także wiele przykładówych fragmentów kodu, które znacznie ułatwiają rozumienie mechanizmu działania sygnałów i slotów, zasad działanie elementów interfejsu, kontenerów i innych narzędzi bibliotecznych. Kolejną zaletą użycia framework'u \emph{Qt} jest możliwość stworzenia wwieloplatformowej aplikacji graficznej bez konieczności utrzymania kilku wersji kodu dla różnych systemów operacyjnych. 
+W dokumentacji do framework-u można znaleźć szczegółowe opisy funkcji bibliotecznych i także wiele przykładowych fragmentów kodu, które znacznie ułatwiają rozumienie mechanizmu działania sygnałów i slotów, zasad działanie elementów interfejsu, kontenerów i innych narzędzi bibliotecznych. Kolejną zaletą użycia framework-u \emph{Qt} jest możliwość stworzenia wieloplatformowej aplikacji graficznej bez konieczności utrzymania kilku wersji kodu dla różnych systemów operacyjnych. 
 
 
 
 \section{Programowa konfiguracja \emph{Raspberry Pi}}
-Jako środowisko systemowe na \emph{Raspberry Pi} został zainstalowany \emph{Raspbian} -- system operacyjny \emph{GNU/Linux} dla mikrokomputerów \emph{Raspberry Pi}, oparty na dystrybucji \emph{Debian}. System jest dostepny do ściągnięcia z oficjalnej strony projektu \emph{Raspbian}: 
+Jako środowisko systemowe na \emph{Raspberry Pi} został zainstalowany \emph{Raspbian} -- system operacyjny \emph{GNU/Linux} dla mikrokomputerów \emph{Raspberry Pi}, oparty na dystrybucji \emph{Debian}. System jest dostępny do ściągnięcia z oficjalnej strony projektu \emph{Raspbian}: 
 
 \begin{alltt}
     \url{http://www.raspbian.org/} 
@@ -253,7 +253,7 @@ lub z oficjalnej strony projektu \emph{Raspberry Pi}:
     \url{http://www.raspberrypi.org/downloads/}
 \end{alltt}
 
-Komunikacja z urządzeniami pereferyjnymi przez interfejs \emph{SPI} odbywa się za pomocą sterownika \emph{SPI}, wbudowanego w jądro systemu operacyjnego. Przed rozpoczęciem komunikacji między \emph{Raspberry Pi} i urządzeniem pereferyjnym należy odpowiednio skonfigurować system operacyjny.
+Komunikacja z urządzeniami peryferyjnymi przez interfejs \emph{SPI} odbywa się za pomocą sterownika \emph{SPI}, wbudowanego w jądro systemu operacyjnego. Przed rozpoczęciem komunikacji między \emph{Raspberry Pi} i urządzeniem peryferyjnym należy odpowiednio skonfigurować system operacyjny.
 Domyślnie sterownik \emph{spi} znajduje się na ``czarnej liście'' modułów jądra systemu i dlatego nie jest ładowany podczas startu systemu.
 Aby dodać go do autostartu systemu należy otworzyć plik \emph{/etc/modprobe.d/raspi-blacklist.conf} w edytorze tekstowym i zakomentować linię (umieścić znak `\#' na początku linii), w której znajduje się nazwa sterownika \emph{spi-bcm2708}
 
@@ -264,7 +264,7 @@ Aby dodać go do autostartu systemu należy otworzyć plik \emph{/etc/modprobe.
 blacklist i2c-bcm2708
 \end{lstlisting}
 
-Również nalezy zmodyfikować plik \emph{/etc/modules}, usuwając znak znać `\#' na początku linii, w której znajduje się nazwa modułu \emph{spi-dev}:
+Również należy zmodyfikować \emph{/etc/modules}, usuwając znak `\#' na początku linii, w której znajduje się nazwa modułu \emph{spi-dev}:
 \vspace{0.5cm}
 
 \begin{minipage}{\textwidth}
@@ -290,7 +290,7 @@ Również nalezy zmodyfikować plik \emph{/etc/modules}, usuwając znak znać 
 
 Po wprowadzeniu zmian należy zrestartować \emph{Raspberry Pi} (np. za pomocą wykonania polecenia \emph{reboot} w linii komend systemu operacyjnego \emph{Raspbian}). 
 
-Po ponownym załadowaniu można sprawdzić, czy moduł \emph{SPI} został załadowany. W tym celu można skorzystać z polecenia \emph{lsmod}.
+Po ponownym załadowaniu można sprawdzić, czy moduł \emph{SPI} został załadowany. W tym celu należy skorzystać z polecenia \emph{lsmod}.
 \vspace{0.5cm}
 
 \begin{minipage}{\textwidth}
@@ -318,9 +318,9 @@ Interfejs \emph{SPI} \emph{(Serial Peripheral Interface)} umożliwia komunikacj�
   \item{\emph{\textbf{SCK} (Serial Clock)} - zegar synchronizujący transmisję}
 \end{itemize}
 
-Aktywacją wybranego urządzenia pereferyjnego odbywa się za pomocą dodatkowej linii \emph{\textbf{SS} (Slave Select)}.
+Aktywacją wybranego urządzenia peryferyjnego odbywa się za pomocą dodatkowej linii \emph{\textbf{SS} (Slave Select)}.
 
-Na rysunku \ref{spi} jest umieszczony schemat komunikacji mędzy urządzeniem nadrzędnym i pojedyńczym urządzeniem podporządkowanym.
+Na rysunku \ref{spi} jest umieszczony schemat komunikacji nędzy urządzeniem nadrzędnym i pojedynczym urządzeniem podporządkowanym.
 
 \begin{figure}[!ht]
     \centering
@@ -347,7 +347,7 @@ Biblioteka do sterowania układem składa się z trzech plików:
   \item{\emph{RGB.h}}
 \end{itemize}
 
-Plik \emph{RGB.h} zawiera structurę \emph{RGB}, która składa się z trzech pól:
+Plik \emph{RGB.h} zawiera strukturę \emph{RGB}, która składa się z trzech pól:
 
 \begin{itemize}[before=\ttfamily]
   \item{\textbf{uint64\_t} red}
@@ -355,7 +355,7 @@ Plik \emph{RGB.h} zawiera structurę \emph{RGB}, która składa się z trzech 
   \item{\textbf{uint64\_t} blue}
 \end{itemize}
 
-Każde pole służy do przechowywania wartości odpowiedniego koloru. Struktura została przeniesiona do oddzielnego pliku w cela dalszej możliwości korzystania z nej bez konieczności dołączania całej biblioteki.
+Każde pole służy do przechowywania wartości odpowiedniego koloru. Struktura została przeniesiona do oddzielnego pliku w cela dalszej możliwości korzystania z niej bez konieczności dołączania całej biblioteki.
 
 \vspace{0.3cm}
 
@@ -431,7 +431,7 @@ Funkcja służy do czyszczenia obiektu struktury \emph{RGB}.
 %\begin{minipage}{\textwidth}
 
 %description
-Funkcja służy do obliczania indeksu bloku pamięci diody w rejestrze przesuwnym. W związku z tym. Dzięki tej funkcji użytkownik biblioteki nie musi uwzględniać modelu pamięci rejestru przesuwnego układu \emph{tlc5947}, korzystając z niego tak samo, jak ze zwykłej tablicy bajtowej. 
+Funkcja służy do obliczania indeksu bloku pamięci diody w rejestrze przesuwnym. Dzięki tej funkcji użytkownik biblioteki nie musi uwzględniać modelu pamięci rejestru przesuwnego układu \emph{tlc5947}, korzystając z niego tak samo, jak ze zwykłej tablicy bajtowej. 
 %description
 
 \begin{center}
@@ -468,7 +468,7 @@ Funkcja służy do obliczania indeksu bloku pamięci diody w rejestrze przesuwny
 %description
 Funkcja służy do kompilacji fragmentu pamięci dla diody o numerze nieparzystym, który będzie zawierał uporządkowane w odpowiedniej kolejności wartości dla kolorów czerwonego, zielonego i niebieskiego.
 Przykład działania funkcji:
-W przypadku, gdy Parametr wejsciowy \emph{\textbf{RGB} rgbSet} ma nastepujace wartosci:
+W przypadku, gdy Parametr wejściowy \emph{\textbf{RGB} rgbSet} ma następujące wartości:
 
 \begin{itemize}
   \item{rgbSet.red   = 0x123}
@@ -482,9 +482,9 @@ Funkcja zwróci wartość 64-bitową, która stanowi następujący fragment pami
 \hspace{0.3cm} \textbf{[00 00 00 89 67 45 23 01]}
 \vspace{0.3cm}
 
-Otrzymany w wyniku fragmnet jest później wkładany do tablicy \emph{txdata}, która jest przesyłana do rejestru przesuwnego. Z tego powodu, że otzymany fragment pamięci jest wkładany do tablicy \emph{txdata} za pomocą operacji logicznej \emph{OR}, wartości dla odpowiednich kolorów znajdują się na właściwych pozycjach, reszta fragmentu pamięci jest wypełniona zerami, żeby nie zmodyfikować wartości kolorów dla innych diod, które znajdują się w tablicy.
+Otrzymany w wyniku fragment jest później wkładany do tablicy \emph{txdata}, a następnie przesyłany do rejestru przesuwnego. Otrzymany fragment pamięci jest wkładany do tablicy \emph{txdata} za pomocą operacji logicznej \emph{OR}. Wartości dla odpowiednich kolorów znajdują się na właściwych pozycjach, przy czym reszta fragmentu pamięci jest wypełniona zerami. Dzięki temu wartości kolorów dla innych diod, które znajdują się w tablicy, nie ulegają modyfikacji.
 
-Operację na pamięci w większości wykonywane są za pomoća operatorów logicznych \emph{AND}, \emph{OR} oraz przesunięć bitowych. W kodzie biblioteki znajduje się szczegółowy opis zmian, które odbywają się w pamięci.
+Operację na pamięci w większości wykonywane są za pomocą operatorów logicznych \emph{AND}, \emph{OR} oraz przesunięć bitowych. W kodzie biblioteki znajduje się szczegółowy opis zmian, które odbywają się w pamięci.
 
 \vspace{0.3cm}
 \begin{lstlisting}[language=c,frame=single,caption={Fragment kodu, w którym przedstawiony jest komentarz ilustrujący efekt wykonywania operacji na pamięci}]
@@ -512,11 +512,11 @@ Operację na pamięci w większości wykonywane są za pomoća operatorów logi
         \\ \hline
         
     \textbf{Parametry wejściowe}  & 
-        \emph{\textbf{RGB} rgbSet} -- obiek struktury \emph{RGB}, który zawiera wartości dla odpowiednich kolorów
+        \emph{\textbf{RGB} rgbSet} -- obiekt struktury \emph{RGB}, który zawiera wartości dla odpowiednich kolorów
         \\ \hline
         
     \textbf{Parametry wyjściowe} &
-        \emph{\textbf{uint64\_t} pattern} -- spreparowany fragment pamięci, który następnie zostanie włożony do rejestru presuwnego
+        \emph{\textbf{uint64\_t} pattern} -- spreparowany fragment pamięci, który następnie zostanie włożony do rejestru przesuwnego
         \\ \hline
         
   \end{tabular}
@@ -534,7 +534,7 @@ Operację na pamięci w większości wykonywane są za pomoća operatorów logi
 %description
 Funkcja służy do kompilacji fragmentu pamięci dla diody o numerze parzystym, który będzie zawierał uporządkowane w odpowiedniej kolejności wartości dla kolorów czerwonego, zielonego i niebieskiego.
 Przykład działania funkcji:
-W przypadku, gdy Parametr wejsciowy \emph{\textbf{RGB} rgbSet} ma nastepujace wartosci:
+W przypadku, gdy Parametr wejściowy \emph{\textbf{RGB} rgbSet} przyjmuje następujące wartości:
 
 \begin{itemize}
   \item{rgbSet.red   = 0x123}
@@ -548,7 +548,7 @@ Funkcja zwróci wartość 64-bitową, która stanowi następujący fragment pami
 \hspace{0.3cm} \textbf{[00 00 00 90 78 56 34 21]}
 \vspace{0.3cm}
 
-Otrzymany w wyniku fragmnet jest później wkładany do tablicy \emph{txdata}, która jest przesyłana do rejestru przesuwnego. Z tego powodu, że otzymany fragment pamięci jest wkładany do tablicy \emph{txdata} za pomocą operacji logicznej \emph{OR}, wartości dla odpowiednich kolorów znajdują się na właściwych pozycjach, reszta fragmentu pamięci jest wypełniona zerami, żeby nie zmodyfikować wartości kolorów dla innych diod, które znajdują się w tablicy.
+Otrzymany w wyniku fragment jest później wkładany do tablicy \emph{txdata}, a następnie przesyłany do rejestru przesuwnego. Otrzymany fragment pamięci jest wkładany do tablicy \emph{txdata} za pomocą operacji logicznej \emph{OR}. Wartości dla odpowiednich kolorów znajdują się na właściwych pozycjach, przy czym reszta fragmentu pamięci jest wypełniona zerami. Dzięki temu wartości kolorów dla innych diod, które znajdują się w tablicy, nie ulegają modyfikacji.
 
 Operację na pamięci w większości wykonywane są za pomoća operatorów logicznych \emph{AND}, \emph{OR} oraz przesunięć bitowych. W kodzie biblioteki znajduje się szczegółowy opis zmian, które odbywają się w pamięci.
 
@@ -578,11 +578,11 @@ Operację na pamięci w większości wykonywane są za pomoća operatorów logi
         \\ \hline
         
     \textbf{Parametry wejściowe}  & 
-        \emph{\textbf{RGB} rgbSet} -- obiek struktury \emph{RGB}, który zawiera wartości dla odpowiednich kolorów
+        \emph{\textbf{RGB} rgbSet} -- obiekt struktury \emph{RGB}, który zawiera wartości dla odpowiednich kolorów
         \\ \hline
         
     \textbf{Parametry wyjściowe} &
-        \emph{\textbf{uint64\_t} pattern} -- spreparowany fragment pamięci, który następnie zostanie włożony do rejestru presuwnego
+        \emph{\textbf{uint64\_t} pattern} -- spreparowany fragment pamięci, który następnie zostanie włożony do rejestru przesuwnego
         \\ \hline
         
   \end{tabular}
@@ -598,7 +598,7 @@ Operację na pamięci w większości wykonywane są za pomoća operatorów logi
 %\begin{minipage}{\textwidth}
 
 %description
-Funkcja służy do obliczania indeksu bloku pamięci diody w rejestrze przesuwnym. W związku z tym. Dzięki tej funkcji użytkownik biblioteki nie musi uwzględniać modelu pamięci rejestru przesuwnego układu \emph{tlc5947}, korzystając z niego tak samo, jak ze zwykłej tablicy bajtowej. 
+Funkcja służy do obliczania indeksu bloku pamięci diody w rejestrze przesuwnym. Dzięki tej funkcji użytkownik biblioteki nie musi uwzględniać modelu pamięci rejestru przesuwnego układu \emph{tlc5947}, korzystając z niego tak samo, jak ze zwykłej tablicy bajtowej. 
 %description
 
 \begin{center}
@@ -615,7 +615,7 @@ Funkcja służy do obliczania indeksu bloku pamięci diody w rejestrze przesuwny
         
     \textbf{Parametry wejściowe}  & 
         \begin{itemize}
-        \item{\emph{\textbf{uint32\_t} ledNumber} -- number diody, której dotyczy działanie} 
+        \item{\emph{\textbf{uint32\_t} ledNumber} -- numer diody, której dotyczy działanie} 
         \item{\emph{\textbf{uint64\_t} RGBpattern} -- spreparowany 64-bitowy fragment pamięci, zawierający odpowiednie wartości kolorów} 
         \item{\emph{\textbf{uint8\_t*} tab} -- wskaźnik na tablicę \emph{txdata}, która zostanie później przesłana do rejestru przesuwnego} 
         \end{itemize}
@@ -665,7 +665,7 @@ Funkcja zwraca obiekt struktury \emph{\textbf{RGB}}, który zawiera wartości ko
         
     \textbf{Parametry wejściowe}  & 
         \begin{itemize}
-        \item{\emph{\textbf{uint32\_t} ledNumber} -- number diody, której dotyczy działanie} 
+        \item{\emph{\textbf{uint32\_t} ledNumber} -- numer diody, której dotyczy działanie} 
         \item{\emph{\textbf{uint64\_t} RGBpattern} -- spreparowany 64-bitowy fragment pamięci, zawierający odpowiednie wartości kolorów} 
         \item{\emph{\textbf{uint8\_t*} tab} -- wskaźnik na tablicę \emph{txdata}, która zostanie później przesłana do rejestru przesuwnego} 
         \end{itemize}
@@ -688,7 +688,7 @@ Funkcja zwraca obiekt struktury \emph{\textbf{RGB}}, który zawiera wartości ko
 %\begin{minipage}{\textwidth}
 
 %description
-Funkcja służy do ustawiana koloru wybranej diody. Funkcja korzysta z funkcji statycznych biblioteki: \emph{compileEvenLedPattern}, \emph{compileOddLedPattern}, \emph{insertLedRgb}
+Funkcja służy do ustawiana koloru wybranej diody. Korzysta ona z funkcji statycznych biblioteki: \emph{compileEvenLedPattern}, \emph{compileOddLedPattern}, \emph{insertLedRgb}
 %description
 
 \begin{center}
@@ -705,7 +705,7 @@ Funkcja służy do ustawiana koloru wybranej diody. Funkcja korzysta z funkcji s
         
     \textbf{Parametry wejściowe}  & 
         \begin{itemize}
-        \item{\emph{\textbf{uint32\_t} ledNumber} -- number diody, której dotyczy działanie} 
+        \item{\emph{\textbf{uint32\_t} ledNumber} -- numer diody, której dotyczy działanie} 
         \item{\emph{\textbf{RGB} rgbSet} -- obiekt struktury \emph{\textbf{RGB}}, który zawiera odpowiednie wartości kolorów czerwonego, zielonego i niebieskiego} 
         \item{\emph{\textbf{uint8\_t*} tab} -- wskaźnik na tablicę \emph{txdata}, która zostanie później przesłana do rejestru przesuwnego} 
         \end{itemize}
@@ -774,7 +774,7 @@ Funkcja służy do wyświetlania zawartości tablicy \emph{txdata} na standardow
 \end{figure}
 
 
-Na podanym zrzucie ekranu (rys. \ref{fig:ledSimulator}) jest przedstawione okno główne alikacji graficznej \emph{LedSimulator}. Aplikacja znajduje się w trybie \emph{Color calibration}. Pokazany jest układ zawierający 8 diod RGB. Diody są ponumerowane od \emph{0}. Każdej diodzie przysługują 3 pola tekstowe:
+Na podanym zrzucie ekranu (rys. \ref{fig:ledSimulator}) jest przedstawione okno główne aplikacji graficznej \emph{LedSimulator}. Aplikacja znajduje się w trybie \emph{Color calibration}. Pokazany jest układ zawierający 8 diod RGB. Diody są ponumerowane od \emph{0}. Każdej diodzie przysługują 3 pola tekstowe:
 
 \begin{itemize}
   \item{\emph{red}}
@@ -782,7 +782,7 @@ Na podanym zrzucie ekranu (rys. \ref{fig:ledSimulator}) jest przedstawione okno 
   \item{\emph{blue}}
 \end{itemize}
 
-W każde pole użytkownik może wprowadzić wartość od \emph{0} do \emph{255}. Wprowadzane wartości są sprawdzane za pomocą wyrażeń regularnych, dzięki czemu nie jest możliwe wprowadzenie innych znaków, niż cyfry, oraz liczb, większych niż 255.
+W każde pole użytkownik może wprowadzić wartość od \emph{0} do \emph{255}. Wpisywane wartości są sprawdzane za pomocą wyrażeń regularnych, dzięki czemu nie jest możliwe wprowadzenie innych znaków, niż cyfry, oraz liczb, większych \emph{niż 255}.
 
 Kolory diod są odświeżane w momencie zmiany wartości w odpowiednim polu. Domyślną wartością, przechowywaną w każdym polu, jest \emph{0}, co oznacza brak koloru (rys. \ref{fig:ledSimulator2}).
 
@@ -812,7 +812,7 @@ Tryb \emph{TLC5947 simulation} służy do testowania działania biblioteki w prz
     \label{fig:modes}
 \end{figure}
 
-Aplikacja \emph{LedSimulator} może być skonfigurowana odpowiednio dla róźnych układów diod. Jak widać na rysunku \ref{fig:ledSimulator4}, aplikacja może symulować działanie układu o dowolnej liczbie diod.
+Aplikacja \emph{LedSimulator} może być skonfigurowana odpowiednio dla rożnych układów diod. Jak widać na rysunku \ref{fig:ledSimulator4}, aplikacja może symulować działanie układu o dowolnej liczbie diod.
 
 \begin{figure}[!ht]
     \centering
@@ -821,8 +821,8 @@ Aplikacja \emph{LedSimulator} może być skonfigurowana odpowiednio dla róźnyc
     \label{fig:ledSimulator4}
 \end{figure}
 
-Również jest mozliwe ułożenie diod w kilka rzędów.
-Na rysunku \ref{fig:ledSimulator3} jest przedstawiony widok aplikacji, skonfigorowanej dla symulowania działania układu diod 2x4
+Również jest możliwe ułożenie diod w kilka rzędów.
+Na rysunku \ref{fig:ledSimulator3} przedstawiony jest widok aplikacji, skonfigurowanej dla symulowania działania układu diod 2x4
 
 \begin{figure}[!ht]
     \centering
@@ -834,7 +834,168 @@ Na rysunku \ref{fig:ledSimulator3} jest przedstawiony widok aplikacji, skonfigor
 % ************************************************************************************************
 %                                           CHAPTER
 % ************************************************************************************************
-\chapter{Uruchomienie aplikacji w środowisku \emph{Qt creator}}
+\chapter{Przykłady uruchomienia projektu}
+
+% *****************************************************
+%                                           section
+% *****************************************************
+\section{Zastosowanie biblioteki \emph{tlc5947\_controller} do sterowania układ 8 diod za pomocą \emph{Raspberry Pi}}
+
+Na rysunku \ref{fig:rpi_tlc} jest przesdtawiony działający układ \emph{tlc5947} z zamontowanymi 2 diodami, podłączony do mikrokomputera \emph{Raspberry Pi}.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/rpi_tlc.jpg} 
+    \caption{Układ \emph{tlc5947} i mikrokomputer \emph{Raspberry Pi}}
+    \label{fig:rpi_tlc}
+\end{figure}
+
+\clearpage
+
+Niżej jest przedstawiony fragment kodu, który pozwala na sterowanie układem \emph{tlc5947} za pomocą napisanej biblioteki.
+
+\begin{lstlisting}[language=c,frame=single,caption={Sterowanie układem emph{tlc5947} za pomocą biblioteki   \emph{tlc5947\_controller}}]
+ #include <math.h>
+#include <stdint.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <getopt.h>
+#include <fcntl.h>
+#include <sys/ioctl.h>
+#include <sys/time.h>
+#include <linux/types.h>
+#include <linux/spi/spidev.h>
+#include "RPI_SPI_TLC5947/tlc5947_lib/tlc5947_controller.h"
+
+
+#define TIMER 100000
+
+
+static void pabort(const char *s)
+{
+  perror(s);
+  abort();
+}
+
+static const char *device = "/dev/spidev0.0";
+static uint8_t mode;
+static uint8_t bits = 8;
+static uint32_t speed = 200000;
+static uint16_t delay;
+int factor = 4096/256;
+
+
+uint8_t txdata[SIZE] = {
+//  rrrrrrr-gggggggg--bbbbbbb/rrrrrrrr-ggggggggg-bbbbbbb/
+  0x00, 0x00, 0x00, 0xff, 0x00, 0x00, 0xff, 0x00, 0x00, // right
+  0xff, 0xf0, 0x00, 0xff, 0x00, 0xff, 0x00, 0xff, 0x00, //  ^
+  0xff, 0xf0, 0x00, 0xff, 0x00, 0x00, 0x00, 0x0f, 0xff, //  |
+  0x00, 0x0f, 0xff, 0x00, 0xff, 0xf0, 0x00, 0x00, 0x00  // left
+};
+
+
+static void write36(int fd)
+{
+  write(fd, txdata, 36);
+}
+
+static void initspi(int fd)
+{
+  int ret = 0;
+
+/** spi mode **/
+  ret = ioctl(fd, SPI_IOC_WR_MODE, &mode);
+  if (ret == -1)
+    pabort("can't set spi mode");
+
+  ret = ioctl(fd, SPI_IOC_RD_MODE, &mode);
+  if (ret == -1)
+    pabort("can't get spi mode");
+
+/** bits per word **/
+  ret = ioctl(fd, SPI_IOC_WR_BITS_PER_WORD, &bits);
+  if (ret == -1)
+    pabort("can't set bits per word");
+
+  ret = ioctl(fd, SPI_IOC_RD_BITS_PER_WORD, &bits);
+  if (ret == -1)
+    pabort("can't get bits per word");
+
+/** max speed hz **/
+  ret = ioctl(fd, SPI_IOC_WR_MAX_SPEED_HZ, &speed);
+  if (ret == -1)
+    pabort("can't set max speed hz");
+
+  ret = ioctl(fd, SPI_IOC_RD_MAX_SPEED_HZ, &speed);
+  if (ret == -1)
+    pabort("can't get max speed hz");
+
+}
+
+void cleanAllLeds()
+{
+  memset(txdata, 0, SIZE);
+}
+
+int main(int argc, char *argv[])
+{
+  int fd;
+
+  fd = open(device, O_RDWR);
+
+  if (fd < 0)
+    pabort("can't open device");
+
+  initspi(fd);
+
+  printf("---------------------------------------\n");
+  printf("spi mode: %d\n", mode);
+  printf("bits per word: %d\n", bits);
+  printf("max speed: %d Hz (%d KHz)\n", speed, speed / 1000);
+  printf("---------------------------------------\n");
+
+  cleanAllLeds();
+
+  RGB rgb7;
+  rgb7.red   = 0xff;
+  rgb7.green = 0x0;
+  rgb7.blue  = 0xf; 
+
+  RGB rgb6;
+  rgb6.red   = 0x0;
+  rgb6.green = 0xff;
+  rgb6.blue  = 0xf; 
+  
+  int i=0;
+  for( ;i<10; ++i)
+  {
+    setLedRGB(6, rgb6, txdata);
+    setLedRGB(7, rgb7, txdata); 
+    usleep(TIMER);
+    write36(fd);
+    printLedDataArray(txdata);
+
+    setLedRGB(7, rgb6, txdata);
+    setLedRGB(6, rgb7, txdata); 
+    usleep(TIMER);
+    write36(fd);
+    printLedDataArray(txdata);
+  }
+
+
+  close(fd);
+  printf("close FD\n");
+
+  return;
+}
+\end{lstlisting}
+
+% *****************************************************
+%                                           section
+% *****************************************************
+\clearpage
+\section{Uruchomienie aplikacji w środowisku \emph{Qt creator}}
 Procedura instalacji i konfigurowania środowiska została przeprowadzona w systemie operacyjnym \emph{Ubuntu Linux}.
 Do uruchomienia programu \emph{LedSymulator} należy ściągnąć środowisko \emph{Qt Community Edition} (aktualna wersja 5.4), w skład którego wchodzą IDE \emph{Qt creator} i zestaw bibliotek \emph{Qt}.
 Środowisko jest dostępne do ściągnięcia ze strony:
@@ -849,8 +1010,33 @@ Aktualny link do ściągnięcia:
     \url{http://download.qt-project.org/official_releases/online_installers/qt-opensource-linux-x64-online.run}
 \end{alltt}
 
+Po zainstalowaniu środowiska należy zaimportować projekt w IDE \emph{Qt creator}. Projekt jest skonfigurowany do współpracy z biblioteką do obsługi układu \emph{tlc5947} w pełni gotowy do kompilacji i uruchomienia.
+
+Na poniższym rysunku jest przedstawiona aplikacja \emph{LedSimulator}, uruchomionej w systemie Ubuntu Linux. Aplikacja działa w trybie symulacji. Scenariusz symulacji polega na wizualizacji ilości zajętej pamięci operacyjnej.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\textwidth]{Figures/ledSimulatorLinux.png} 
+    \caption{Wizualizacja ilości zajętej pamięci RAM w aplikacji \emph{LedSimulator}}
+    \label{fig:ledSimulatorLinux}
+\end{figure}
 
 
+
+
+% ************************************************************************************************
+%                                           CHAPTER
+% ************************************************************************************************
+\addcontentsline{toc}{chapter}{\hspace{0.64cm}Podsumowanie}
+\chapter*{Podsumowanie}
+
+Zgodnie ze wstępnymi założeniami, wynikiem projektu inżynierskiego jest biblioteka \emph{tlc5947\_controller}, napisana w języku C oraz aplikacja graficzna \emph{LedSimulator}, stworzona z wykorzystaniem framework-u \emph{Qt}. Celem nadrzędnym było stworzenie wygodnego narzędzia do sterowania układem \emph{Texas Intruments tlc5947} oraz napisanie szczegółowej dokumentacji. Biblioteka pozwala na ustawienie koloru wybranej diody, pobieranie aktualnego koloru i wyświetlenie stanu rejestru przesuwnego na standardowym wyjściu. Użycie funkcji, udostępnionych w API biblioteki, nie wymaga głębokie wiedzy na temat interfejsów wymiany danymi, lub zasad działania układów elektronicznych. Użytkownik ma do dyspozycji abstrakcyjną tablicę danych oraz strukturę \emph{RGB}, które pełnią funkcją pośredniczącą pomiędzy użytkownikiem biblioteki i układem \emph{tlc5947}. 
+
+Potencjalne rozbudowanie biblioteki nie powinno być problematyczne ze względu na dużą ilość komentarzy i przykładów w kodzie źródłowym. Działanie biblioteki i aplikacji graficznej zostało sprawdzone na kilku systemach operacyjnych (\emph{Microsoft Windows}, \emph{Ubuntu Linux} oraz \emph{OSX}). Zastosowanie framework-u \emph{Qt} znacznie przyspieszyło pracę nad częścią graficzną projektu i pozwoliło na stworzenie rozwiązania wieloplatformowego.
+
+Dzięki dużej popularności wybranych technologii, bogatej dokumentacji i aktywnemu udziału promotora, podczas pracy nad danym projektem nie napotkano żadnych problemów, które następnie nie zostały rozwiązane.
+
+Wszystkie cele i założenia projektu zostały spełnione.
 
 %opcjonalnie możliwe tu pojawienie spis rysunków i tabel
 \addcontentsline{toc}{chapter}{\hspace{0.64cm}\listfigurename}

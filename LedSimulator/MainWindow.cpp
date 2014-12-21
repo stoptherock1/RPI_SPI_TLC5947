@@ -8,6 +8,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     this->setWindowTitle("LedSimulator");
 
+    memset( txdata, 0, sizeof(txdata) );
+
     mmThread = new MemoryMonitor(&simulationOn, &systemLinux, LED_NUMBER);
 
     diameter = 100;
@@ -88,8 +90,11 @@ MainWindow::MainWindow(QWidget *parent) :
 
     if (NULL != pipe)
     {
-        fscanf(pipe, "%s", &system);
+        fscanf(pipe, "%s", system);
         pclose(pipe);
+
+        qDebug() << system;
+        qDebug() << "LED_NUMBER: " << LED_NUMBER;
 
         if(strcmp("Linux", system) == 0)
         {
@@ -121,6 +126,8 @@ void MainWindow::ledColorChanged(QString text)
     setLedColor(ledNumber, colorCode, color255);
 }
 
+
+
 void MainWindow::setLedColor(uint32_t ledNumber, uint8_t colorCode, uint8_t color255)
 {
     if(0==colorCode)
@@ -130,10 +137,21 @@ void MainWindow::setLedColor(uint32_t ledNumber, uint8_t colorCode, uint8_t colo
     else
         leds[ledNumber].blue = color255;
 
-    QColor color(leds[ledNumber].red,
-                 leds[ledNumber].green,
-                 leds[ledNumber].blue);
+    uint64_t factor = 16; //4096 / 256
 
+    RGB rgb;
+
+    rgb.red = leds[ledNumber].red * factor;
+    rgb.green = leds[ledNumber].green * factor;
+    rgb.blue = leds[ledNumber].blue * factor;
+
+    //check, if tlc5947_controller library do eveything correct
+    setLedRGB(ledNumber, rgb, txdata);
+    rgb = getLedRGB(ledNumber, txdata);
+
+    QColor color(rgb.red / factor,
+                 rgb.green / factor,
+                 rgb.blue / factor);
 
     QBrush brush(color);
     painters[ledNumber]->setBrush(brush);
@@ -154,12 +172,18 @@ MainWindow::~MainWindow()
             ++lineEditsCounter;
         }
 
+        delete ledNames[i];
         delete labelsPixmaps[i];
         delete painters[i];
         delete pixmaps[i];
         delete vBoxLayouts[i];
     }
+
+    delete statusBarText;
     delete hBoxLayout;
+    delete mmThread;
+    delete renderArea;
+    delete window;
     delete ui;
 }
 

@@ -1,13 +1,13 @@
 # Fdb version 3
-["bibtex dyplom-inz-utf8-unix"] 1419174363 "dyplom-inz-utf8-unix.aux" "dyplom-inz-utf8-unix.bbl" "dyplom-inz-utf8-unix" 1419174369
+["bibtex dyplom-inz-utf8-unix"] 1419205408 "dyplom-inz-utf8-unix.aux" "dyplom-inz-utf8-unix.bbl" "dyplom-inz-utf8-unix" 1419205412
   "/usr/local/texlive/2014/texmf-dist/bibtex/bst/gustlib/plabbrv.bst" 1136766823 19788 50e09ba3e2c61d25e7adfc051586b447 ""
-  "dyplom-inz-utf8-unix.aux" 1419174368 5560 4f26ed90f1cdc1d6df415df1219331e5 ""
+  "dyplom-inz-utf8-unix.aux" 1419205411 6552 0d4f0ad448bac10da9a8324369b0c255 ""
   "dyplom-inz-utf8-unix.bcf" 0 -1 0 ""
   "inz.bib" 1419023831 1548 ea36b7bf5d1a49379650afa2fb157d74 ""
   (generated)
   "dyplom-inz-utf8-unix.bbl"
   "dyplom-inz-utf8-unix.blg"
-["pdflatex"] 1419174364 "dyplom-inz-utf8-unix.tex" "dyplom-inz-utf8-unix.pdf" "dyplom-inz-utf8-unix" 1419174369
+["pdflatex"] 1419205409 "dyplom-inz-utf8-unix.tex" "dyplom-inz-utf8-unix.pdf" "dyplom-inz-utf8-unix" 1419205412
   "/usr/local/texlive/2014/texmf-dist/tex/context/base/supp-pdf.mkii" 1337017135 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/etexcmds.sty" 1335995445 7612 c47308d923ec19888707b0f1792b326a ""
   "/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/ifluatex.sty" 1303254447 7324 11d14f318d865f420e692d4e6c9c18c3 ""
@@ -77,19 +77,21 @@
   "Figures/ledSimulator2.png" 1419017429 46240 df0bdd4b6c0ad721c5b87fe605303562 ""
   "Figures/ledSimulator3.png" 1419016558 57534 a54b6319cf0ca442e33202c35b10cedb ""
   "Figures/ledSimulator4.png" 1419017121 47162 d72bcab70b4d424b66e79171dcd0571d ""
+  "Figures/ledSimulatorLinux.png" 1419201385 296325 e8e49ee630bb38f274dea5d5988f864b ""
   "Figures/modes.png" 1419016186 25739 225fa20f8a6b5de630c1303863fd252c ""
+  "Figures/rpi_tlc.jpg" 1419204081 2623048 d5b463bcf260c5101893899daf2b58fa ""
   "Figures/spi3.png" 1417605445 84506 ab5259d7a4dfb91b93df54115765abd8 ""
   "Figures/tlc_2leds.png" 1418847490 80495 13285e33afb4582201717f61149c7245 ""
   "Figures/tlc_array.png" 1416777897 45871 b770a2124d3d925fc8b8274d91219fd4 ""
-  "dyplom-inz-utf8-unix.aux" 1419174368 5560 4f26ed90f1cdc1d6df415df1219331e5 ""
-  "dyplom-inz-utf8-unix.bbl" 1419174364 1430 d805f2d1f82a504d4de17ba8be82fe0a "bibtex dyplom-inz-utf8-unix"
-  "dyplom-inz-utf8-unix.lof" 1419174368 1341 8a0960139b78dcc5bbcac0746a1d3650 ""
-  "dyplom-inz-utf8-unix.tex" 1419174355 40732 cdb6266bd51fd63b060fb1c57d02d379 ""
-  "dyplom-inz-utf8-unix.toc" 1419174368 1809 6b9dc0a06520c1905fb9c6f5932c1599 ""
+  "dyplom-inz-utf8-unix.aux" 1419205411 6552 0d4f0ad448bac10da9a8324369b0c255 ""
+  "dyplom-inz-utf8-unix.bbl" 1419205409 1430 d805f2d1f82a504d4de17ba8be82fe0a "bibtex dyplom-inz-utf8-unix"
+  "dyplom-inz-utf8-unix.lof" 1419205411 1649 19043b7c0d1b604ed72b04c7081346ca ""
+  "dyplom-inz-utf8-unix.tex" 1419205401 47246 9efca655fa1a1a707fae0b4048e472a1 ""
+  "dyplom-inz-utf8-unix.toc" 1419205411 2149 0570d81b8edd5aa0a323273099a541da ""
   "mgr.cls" 1417605445 35095 05d13534e07990ef5bfa77ce9426501f ""
   (generated)
-  "dyplom-inz-utf8-unix.toc"
-  "dyplom-inz-utf8-unix.pdf"
-  "dyplom-inz-utf8-unix.log"
-  "dyplom-inz-utf8-unix.lof"
   "dyplom-inz-utf8-unix.aux"
+  "dyplom-inz-utf8-unix.toc"
+  "dyplom-inz-utf8-unix.log"
+  "dyplom-inz-utf8-unix.pdf"
+  "dyplom-inz-utf8-unix.lof"

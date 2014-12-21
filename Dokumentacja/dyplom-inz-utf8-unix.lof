@@ -1,7 +1,7 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Kolejno\IeC {\'s}\IeC {\'c} danych, odpowiadaj\IeC {\k a}cych dwom diodom, w rejestrze przesuwnym sterownika \emph {Texas Intruments tlc5947}}}{7}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Kolejno\IeC {\'s}\IeC {\'c} danych, odpowiadaj\IeC {\k a}cych dwom diodom, w rejestrze przesuwnym sterownika \emph {Texas Intruments tlc5947}}}{7}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Kolejno\IeC {\'s}\IeC {\'c} danych, odpowiadaj\IeC {\k a}ca dw\IeC {\'o}m diodom, w rejestrze przesuwnym sterownika \emph {Texas Intruments tlc5947}}}{7}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Kolejno\IeC {\'s}\IeC {\'c} danych, odpowiadaj\IeC {\k a}cych dw\IeC {\'o}m diodom, w rejestrze przesuwnym sterownika \emph {Texas Intruments tlc5947}}}{8}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Schemat komunikacji przez interfejs \emph {SPI}}}{12}
 \addvspace {10\p@ }
@@ -11,3 +11,5 @@
 \contentsline {figure}{\numberline {4.4}{\ignorespaces Aplikacja \emph {LedSimulator}, skonfigurowana dla symulowania dzia\IeC {\l }ania uk\IeC {\l }adu 5 diod}}{21}
 \contentsline {figure}{\numberline {4.5}{\ignorespaces Aplikacja \emph {LedSimulator}, skonfigurowana dla symulowania dzia\IeC {\l }ania uk\IeC {\l }adu 2x4 diod}}{21}
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Uk\IeC {\l }ad \emph {tlc5947} i mikrokomputer \emph {Raspberry Pi}}}{23}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Wizualizacja ilo\IeC {\'s}ci zaj\IeC {\k e}tej pami\IeC {\k e}ci RAM w aplikacji \emph {LedSimulator}}}{27}
